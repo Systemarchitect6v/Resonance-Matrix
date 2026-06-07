@@ -22,6 +22,4 @@ In this calibration, the variables are populated natively and instantaneously by
 * **Phase-Slip Induction:** The computer measures the active phase differential (pressure) across the hull, calculating a precise vector line perpendicular to the layer's curve. This line points directly to the center of the mass.
 
 ## 2.4 Progression Summary & Lens Integration
-This model does not invalidate Phase 1; it runs parallel to it. By maintaining the historical path data (Phase 1) alongside the live substrate impedance readings (Phase 2), a navigation system gains analytical depth perception. 
-
-The system tracks where the planet is predicted to be on the chart, while the hull sensors feel exactly ho
+This model does not invalidate Phase 1; it runs parallel to it. By maintaining the historical path data (Phase 1) alongside the live substrate impedance readings (Phase 2), a navigation system gains analytical depth perception.
