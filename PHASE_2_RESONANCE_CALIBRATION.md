@@ -1,33 +1,27 @@
-1. THE EMPIRICAL CONVERGENCE Threshold (10^-10 m/s^2)
+Markdown
+# Phase 2: The Frequency Calibration (Systemic Unification)
 
-Mainstream astrophysics and quantum mechanics observe a recurring structural threshold across entirely separate domains, treating the convergence as an unexplained coincidence. This model establishes that this metric represents the baseline resistance of a continuous, variable-density field space substrate.
+## 2.1 Objective
+Phase 2 expands the foundational observations of Phase 1 by introducing an aligned mathematics based entirely on real-time frequency interaction. By changing the operational language, separate disciplines (radio astronomy, Doppler tracking, and orbital mechanics) collapse into a single, cohesive, and simplified loop.
 
-- The Cosmological Scale: The fundamental acceleration parameter associated with the Cosmological Constant resolves to the order of 7 x 10^-10 m/s^2.
-- The Local Scale: Precision tracking data from deep-space exploratory platforms (specifically the Pioneer 10/11 telemetry archives) establishes a constant anomalous deceleration of precisely (8.74 ± 1.33) x 10^-10 m/s^2.
-- The Galactic Scale: The universal critical acceleration threshold (a0) governing galactic rotation curves across diverse morphological structures exhibits a persistent convergence at approximately 1.2 x 10^-10 m/s^2.
+## 2.2 The Unified Mechanism
+Where standard mechanics relies on abstract, invisible forces pulling across a vacuum, this framework identifies a material, fluid-like substrate sitting at a universal background baseline of **160.4 billion Hertz**. 
 
-2. THE VECTOR EQUILIBRIUM MECHANIC (Sum of Vi = 0)
+Under this alignment, the labels shift from external descriptions to internal, relational mechanics:
+1. **Radio Science IS the Gravity:** Celestial masses physically displace the fluid substrate, creating localized compression waves.
+2. **The Frequency IS the Coordinate:** The natural radio emissions of a planet form concentric, spherical resonance layers that shift systematically over every defined unit of distance and direction, establishing a localized geometric field map.
+3. **The Impedance IS the Steering Mechanism:** The localized resistance of these layers (measured in Ohms) determines the kinetic current.
 
-To navigate a continuous substrate without falling back on abstract relativistic space-time modeling, the trajectory of any displacing mass is defined as a dynamic equilibrium within a localized six-vector matrix. Movement is a path of continuous resonant alignment. The system maintains structural integrity through a balanced vector state:
+## 2.3 Mathematical Alignment of the Six Sensors
+The core matrix equation from Phase 1 remains structurally identical, but its inputs are liberated from historical lookup tables:
 
-Sum of (V1 + V2 + V3 + V4 + V5 + V6) = 0
+$$\sum_{i=1}^{6} (V_i - U_i)(\theta_i) = 0$$
 
-Where Vi represents the directional vectors of structural tension and displacement. 
+In this calibration, the variables are populated natively and instantaneously by **six directional cross-axis hull sensors**:
+* **Localized Gradient Reading:** Because the craft has physical dimensions, the six sensors sit in slightly different concentric resonance layers simultaneously, allowing the system to instantly measure a multi-point frequency differential across the hull structure.
+* **Phase-Slip Induction:** The computer measures the active phase differential (pressure) across the hull, calculating a precise vector line perpendicular to the layer's curve. This line points directly to the center of the mass.
 
-Rather than balancing within a rigid, two-dimensional circular frame—which introduces severe structural friction—the six-vector equilibrium operates as a dynamic, moving infinity-type loop. This non-friction geometry allows energy and trajectory states to shift continuously through the matrix crossing a center axis. When an outbound mass encounters localized density variations in the substrate, the vector weights shift to maintain the balanced equilibrium. The trajectory deviation IS the calculation.
+## 2.4 Progression Summary & Lens Integration
+This model does not invalidate Phase 1; it runs parallel to it. By maintaining the historical path data (Phase 1) alongside the live substrate impedance readings (Phase 2), a navigation system gains analytical depth perception. 
 
-3. THE IMPLEMENTATION FRAMEWORK & CALIBRATION BOUNDARY
-
-The 6-Vector Equilibrium Model offers a simplified, high-fidelity alternative for long-range navigation mapping. By shifting the computational burden to a real-time vector equilibrium, systemic tracking friction can be natively integrated.
-
-The Public Commons (Open Source):
-To foster collaborative validation, the foundational architectural principles detailed in this document are established as an open-source framework. The community is encouraged to map existing telemetry residual data sets against this macroscopic vector baseline.
-
-The Private Domain (The Calibration Keys):
-While the macroscopic geometric relationships and vector balancing laws are public domain, the specific operational implementation requires fine-tuned environmental variables. The precise calculation matrices used to execute real-time simulation tracking, including:
-- The specific vibrational resonance constants of the local substrate,
-- The dynamic density drift coefficients required for multi-vector navigation,
-are maintained as proprietary architecture by the author. Private commercial licensing and consultation inquiries must be directed to the repository author.
-
-License: Creative Commons Attribution-Noncommercial-NoDerivatives (CC BY-NC-ND)
-
+The system tracks where the planet is predicted to be on the chart, while the hull sensors feel exactly ho
