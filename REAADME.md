@@ -12,6 +12,16 @@ This repository does not invalidate existing technological performance or empiri
 Instead, this project executes an **ontological vocabulary correction** to align current engineering outputs with their true physical mechanics. By replacing legacy narrative fiction—such as treating physical variations as "noise," "interferometry errors," or "anomalous drift"—with precise structural terms, the math and the language finally line up. We move the software narrative away from an isolated vacuum and into a continuous, structured 3D medium.
 ---
 Markdown
+## 2. The Structural Comparison Matrix
+To eliminate systemic friction in software architecture, we must translate legacy narrative placeholders into precise physical coordinates. This table maps the direct alignment from standard vacuum shorthand to the continuous 3D medium framework:
+
+| Column 1: Legacy Vacuum Narrative (The Friction) | Column 2: 6-Vector Ontology (The Alignment) |
+| :--- | :--- |
+| **The Static Assumption:** Space is an empty void or vacuum. Variations in data are categorized as "noise," "interferometry errors," or "anomalous drift." | **The Continuous Assumption:** Space is a full, continuous, structured 3D fluid medium substrate with variable densities and vibrational resonance. |
+| **The Shorthand Label:** "System Tracking Error / Drift Calculation." | **The True Vector Label:** The primary tracking coordinate ($\theta_i$) indicating the system's live geometric relationship to the medium. |
+| **The Reaction to Change:** The software encounters sudden friction, registers an error spike, lags behind reality, and must execute a heavy recalculation loop. | **The Reaction to Change:** The system updates instantly because the body is fully immersed in, and a structural extension of, the shifting medium. |
+
+Markdown
 # The 6-Vector Cosmological Model: A Progression of Application
 
 ## Project Overview
