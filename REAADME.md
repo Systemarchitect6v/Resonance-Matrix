@@ -42,7 +42,30 @@ In this natural state, the incoming volume vector ($\mathbf{V}_i$) and the outgo
 The change from **32.4 Sv** to **54.2 Sv** is the exact numerical resolution required to keep the equation balanced at **Zero (Dynamic Equilibrium)** as the fluid medium shifts through space. The ocean is executing the math naturally to maintain systemic balance.
 
 ---
+Markdown
+## 4. The Submerged Body (The Human Interaction)
+Having established the baseline 3D volumetric structure of the natural medium, we take the next logical step: introducing a human-made force interacting within that parameter. We prove that a traversing body does not operate in an isolated vacuum, but is entirely integrated into the structural math of the medium it occupies.
 
+### A. The Integrated Body
+When a vessel enters the Florida Current, its hull is physically submerged inside that deep 32.4 Sv to 54.2 Sv volumetric gradient. Traditional navigation models treat the ship as an isolated object moving through empty space, viewing the current as an external "error force" or "shove" hitting the hull. 
+
+Our ontology proves that the vessel is physically immersed in the medium. If a helmsman sets a static steering course, the ship's actual track across the earth instantly contours to match the exact scaling of the water's volume and geographic angle.
+
+### B. The Resolution of Vectors
+We use the exact same architectural equation to resolve the vessel's live movement. Because the ship and the medium are part of the same continuous system, no separate "error correction" formula is required:
+
+$$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
+
+* **$\mathbf{V}_i$ (The Medium's Volumetric Pressure):** The live, three-dimensional volume vector of the current acting directly on the submerged hull.
+* **$\mathbf{U}_i$ (The Vessel's Intent):** The ship's internal propulsion force and steered heading.
+* **$\theta_i$ (The Angle of Transit):** The resulting real-time tracking angle (the true course over ground, resolving set and drift).
+
+### C. The Realization for the Developer
+Because **Zero is a dynamic equilibrium**, the ship's actual path across the earth is the exact numerical resolution required to keep this formula balanced at $0$. 
+
+If the current velocity increases or shifts direction, the value of $\mathbf{V}_i$ updates instantly. The vessel does not lag behind to run a lagging recalculation loop; its true tracking angle ($\theta_i$) updates at the exact same microsecond to maintain the balance. The movement of the body is a direct structural extension of the flow.
+
+---
 Markdown
 # The 6-Vector Cosmological Model: A Progression of Application
 
