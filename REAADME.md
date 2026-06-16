@@ -17,9 +17,9 @@ To eliminate systemic friction in software architecture, we must translate legac
 
 | Column 1: Legacy Vacuum Narrative (The Friction) | Column 2: 6-Vector Ontology (The Alignment) |
 | :--- | :--- |
-| **The Static Assumption:** Space is an empty void or vacuum. Variations in data are categorized as "noise," "interferometry errors," or "anomalous drift." | **The Continuous Assumption:** Space is a full, continuous, structured 3D fluid medium substrate with variable densities and vibrational resonance. |
-| **The Shorthand Label:** "System Tracking Error / Drift Calculation." | **The True Vector Label:** The primary tracking coordinate ($\theta_i$) indicating the system's live geometric relationship to the medium. |
-| **The Reaction to Change:** The software encounters sudden friction, registers an error spike, lags behind reality, and must execute a heavy recalculation loop. | **The Reaction to Change:** The system updates instantly because the body is fully immersed in, and a structural extension of, the shifting medium. |
+| **The Static Assumption:** Space is an empty void or vacuum. Variations in data are categorized as "noise," "interferometry errors," or "anomalous drift." | **The Continuous Assumption:** Space is a full, continuous, structured 3D medium substrate with variable densities and vibrational resonance. |
+| **The Shorthand Label:** "System Tracking Error / Drift Calculation." | **The Vector Label:** The primary tracking coordinate ($\theta_i$) indicating the system's live geometric relationship to the medium. |
+| **The Reaction to Change:** The software encounters sudden friction, registers an error spike, lags behind reality, and must execute a recalculation loop. | **The Reaction to Change:** The system updates inclusively because the body is fully immersed in, and a structural extension of, the shifting medium. |
 
 ---
 Markdown
