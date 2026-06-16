@@ -68,7 +68,7 @@ If the current velocity increases or shifts direction, the value of $\mathbf{V}_
 ---
 Markdown
 ## 5. The Dynamics of Instantaneous Fluctuation
-A critical bottleneck in modern software architecture—whether in navigation, telemetry tracking, or AI data streaming—is the lag time required to process sudden, unpredictable environmental changes. Traditional models must experience the friction, log an error, and run a heavy recalculation loop to adjust. The 6-Vector ontology eliminates this lag entirely.
+A critical bottleneck in modern software architecture—whether in navigation, telemetry tracking, or AI data streaming—is the lag time required to process sudden, unpredictable environmental changes. Traditional models must experience the friction, log an error, and run a recalculation loop to adjust. The 6-Vector ontology eliminates this lag entirely.
 
 ### A. The Live Balance Scale
 Because our equation functions as a live, instantaneous balance scale, it does not require a time-lagged variable to process changes. The relationship is continuous and instantaneous:
@@ -92,7 +92,7 @@ To ensure this framework applies universally to all engineering architectures—
 A static device does not possess mechanical propulsion, but it does possess an active, directed state. Its orientation, localized geographic coordinates, and internal operational frequency constitute its active Intentional Vector ($\mathbf{U}_i$). It is consciously anchored to a specific orientation to interface with the medium.
 
 ### B. The Medium's Continuous Motion ($\mathbf{V}_i$)
-The concrete pad may be stationary relative to the dirt, but the entire system is immersed in a continuous, fluid spatial substrate that is constantly rotating, shifting in density, and experiencing vibrational resonance. 
+The concrete pad may be stationary relative to the dirt, but the entire system is immersed in a continuous, spatial substrate that is constantly rotating, shifting in density, and experiencing vibrational resonance. 
 
 $$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
 
