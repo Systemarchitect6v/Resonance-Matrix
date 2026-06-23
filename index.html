@@ -80,7 +80,7 @@
         document.getElementById('aiOutputText').innerText = "Establishing secure connection, validating input dimensions, and parsing custom coordinate frameworks...";
 
         // LIVE PIPELINE: Post payload securely to the backend architecture layer
-        fetch('/api-v2/verify-trajectory', {
+        fetch('/api/verify-trajectory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
