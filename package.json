@@ -1,13 +1,6 @@
 {
   "name": "resonance-matrix",
   "version": "1.0.0",
-  "description": "Resonance Matrix Cosmological Model",
-  "main": "api/verify-trajectory.js",
   "type": "module",
-  "scripts": {
-    "start": "vercel dev"
-  },
-  "dependencies": {
-    "@google/genai": "^0.1.1"
-  }
+  "dependencies": {}
 }
