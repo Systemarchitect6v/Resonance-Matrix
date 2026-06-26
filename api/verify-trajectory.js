@@ -1,11 +1,6 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-// Explicitly define the serverless runtime environment variables for Vercel
-export const config = {
-  runtime: 'nodejs'
-};
-
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   // Prevent browser preflight checks from tripping the execution path
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -15,7 +10,7 @@ export default async function handler(req, res) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return res.status(200).json({ 
-        analysisOutput: "System Configuration Notice: GEMINI_API_KEY is missing from Vercel settings." 
+        analysisOutput: "System Configuration Notice: GEMINI_API_KEY is not detected in your Vercel Environment Variables." 
       });
     }
 
@@ -23,10 +18,11 @@ export default async function handler(req, res) {
     
     if (!mathData || !intent) {
       return res.status(200).json({ 
-        analysisOutput: "System Notice: Inputs are unpopulated." 
+        analysisOutput: "System Notice: Awaiting population of coordinate arrays and tracking intent parameters." 
       });
     }
 
+    // Initialize using standard require module allocation
     const ai = new GoogleGenerativeAI(apiKey);
     const model = ai.getGenerativeModel({ model: 'gemini-2.5-flash' });
     
@@ -47,7 +43,7 @@ export default async function handler(req, res) {
 
   } catch (error) {
     return res.status(200).json({ 
-      analysisOutput: `Internal Runtime Exception: ${error.message}` 
+      analysisOutput: `Internal Runtime Exception Catch: ${error.message}` 
     });
   }
-}
+};
