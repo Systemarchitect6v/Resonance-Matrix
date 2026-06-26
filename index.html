@@ -1,85 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trajectory Verification Portal</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 35px; display: flex; flex-direction: column; align-items: center; }
-        .container { max-width: 1050px; width: 100%; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h2 { color: #2c3e50; margin-top: 0; font-size: 28px; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
-        label.section-title { display: block; font-weight: 600; margin-top: 25px; margin-bottom: 10px; color: #34495e; font-size: 18px; }
-        .domain-container { display: flex; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
-        .domain-btn { background-color: #ecf0f1; color: #2c3e50; border: 2px solid #bdc3c7; padding: 10px 20px; font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer; }
-        .domain-btn.active { background-color: #3498db; color: white; border-color: #2980b9; }
-        textarea.ai-input { width: 100%; height: 140px; padding: 15px; box-sizing: border-box; border: 2px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 16px; resize: vertical; background-color: #fafbfc; }
-        textarea.ai-input:focus { border-color: #3498db; outline: none; background-color: #fff; }
-        .btn-container { display: flex; gap: 15px; margin-top: 25px; margin-bottom: 25px; flex-wrap: wrap; }
-        button.action-btn { padding: 14px 28px; font-size: 16px; font-weight: 600; border: none; border-radius: 4px; cursor: pointer; }
-        .btn-primary { background-color: #2ecc71; color: white; }
-        .btn-secondary { background-color: #95a5a6; color: white; }
-        .ai-response-panel { background-color: #2c3e50; color: #ecf0f1; border-left: 6px solid #3498db; padding: 22px; border-radius: 6px; margin-bottom: 25px; font-size: 16px; line-height: 1.6; }
-        .ai-title { font-weight: bold; color: #55efc4; font-size: 18px; margin-bottom: 12px; font-family: monospace; }
-        .ai-text { white-space: pre-wrap; }
-        .error-text { color: #ff7675; font-weight: bold; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Interactive Trajectory Verification Portal</h2>
-    
-    <label class="section-title">Step 1: Focus Field Context</label>
-    <div class="domain-container">
-        <button class="domain-btn active" onclick="setDomain('Atmospheric Dynamics', this)">Atmospheric</button>
-        <button class="domain-btn" onclick="setDomain('Oceanography', this)">Oceanography</button>
-        <button class="domain-btn" onclick="setDomain('Astrophysics', this)">Astrophysics</button>
-        <button class="domain-btn" onclick="setDomain('Custom Coordinate System', this)">Custom/Other Field</button>
-    </div>
-
-    <label class="section-title" for="mathInput">AI Input Field A: Paste raw data arrays, coordinates, or mathematical equations here</label>
-    <textarea id="mathInput" class="ai-input" placeholder="Paste data logs or formulas here..."></textarea>
-
-    <label class="section-title" for="intentInput">AI Input Field B: Describe operational intent, analytical goals, or observed variances</label>
-    <textarea id="intentInput" class="ai-input" placeholder="Describe the tracking anomaly or drift analysis goals here..."></textarea>
-
-    <div class="btn-container">
-        <button class="action-btn btn-primary" onclick="executeAdaptiveAudit()">Verify & Compute Gaps</button>
-        <button class="action-btn btn-secondary" onclick="resetPortal()">Reset Portal</button>
-    </div>
-
-    <div class="ai-response-panel">
-        <div class="ai-title">⚡ INTERACTIVE AI ALIGNMENT STATUS: <span id="statusText" style="color: #ffffff;">STANDBY</span></div>
-        <div id="aiOutputText" class="ai-text">System initialization complete. Awaiting formula and intent block execution.</div>
-    </div>
-</div>
-
 <script>
-    /* ACTIVE FRONT-END SECURE NETWORK PIPELINE */
-    let activeDomain = 'Atmospheric Dynamics'; 
+    // System Domain State Tracker
+    let activeDomain = "General Space-Time Matrix";
 
-    function setDomain(domainName, element) { 
-        activeDomain = domainName; 
-        document.querySelectorAll('.domain-btn').forEach(b => b.classList.remove('active')); 
-        element.classList.add('active'); 
-        document.getElementById('aiOutputText').innerText = `System context focused on ${activeDomain} frameworks.`; 
+    // Domain Selector Activation Matrix
+    function setDomain(domainName, element) {
+        activeDomain = domainName;
+        
+        // Remove active class from all buttons
+        const buttons = document.querySelectorAll('.domain-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        element.classList.add('active');
+        
+        // Update the functional UI sub-header to display active track
+        document.getElementById('activeDomainDisplay').innerText = `Current Track: ${activeDomain}`;
     }
 
+    // Modernized Adaptive Audit Engine Connection
     function executeAdaptiveAudit() {
         const fieldA = document.getElementById('mathInput').value.trim(); 
         const fieldB = document.getElementById('intentInput').value.trim(); 
         
         if (!fieldA || !fieldB) { 
-            document.getElementById('aiOutputText').innerHTML = `<span class="error-text">System Alert:</span> Input fields require population to perform a mathematical parameter verification.`; 
+            document.getElementById('aiOutputText').innerHTML = `System Alert: Input fields require population to perform a mathematical parameter verification.`; 
             return; 
         }
         
-        // Update interface status to reflect live communication
         document.getElementById('statusText').innerText = "TRANSMITTING DATA TO SECURE VAULT CO-CALCULATOR..."; 
         document.getElementById('statusText').style.color = "#3498db";
         document.getElementById('aiOutputText').innerText = "Establishing secure connection, validating input dimensions, and parsing custom coordinate frameworks...";
 
-        // LIVE PIPELINE: Post payload securely to the backend architecture layer
         fetch('/api/verify-trajectory', {
             method: 'POST',
             headers: {
@@ -91,34 +42,23 @@
                 intent: fieldB 
             })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Server connection anomaly reported: ${response.status} Status Code`);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            // Success: Display the fully customized live analysis passed back from Layer 3
-            document.getElementById('statusText').innerText = "DATA AUDIT COMPLETE & VARIANCE MEASURED"; 
-            document.getElementById('statusText').style.color = "#55efc4";
-            document.getElementById('aiOutputText').innerHTML = data.analysisOutput;
+            // If the backend sent an analytical output, display it directly
+            if (data.analysisOutput) {
+                document.getElementById('statusText').innerText = "DATA AUDIT COMPLETE & VARIANCE MEASURED"; 
+                document.getElementById('statusText').style.color = "#55efc4";
+                document.getElementById('aiOutputText').innerText = data.analysisOutput;
+            } else if (data.error) {
+                throw new Error(data.error);
+            } else {
+                throw new Error("Unrecognized data format returned from server.");
+            }
         })
         .catch(error => {
-            // Fault Isolation Handling
-            document.getElementById('statusText').innerText = "CONNECTION LEAK DETECTED"; 
+            document.getElementById('statusText').innerText = "EXECUTION EXCEPTION"; 
             document.getElementById('statusText').style.color = "#ff7675";
-            document.getElementById('aiOutputText').innerHTML = `<span class="error-text">Network Execution Notice:</span> Unable to reach the hidden processing vault.<br><br><em>Technical Details: ${error.message}. This is expected because Layer 3 (the secure server backend) has not been configured and deployed yet.</em>`;
+            document.getElementById('aiOutputText').innerText = `System Alert: The server responded, but encountered an issue processing the request.\n\nDetails: ${error.message}`;
         });
     }
-
-    function resetPortal() { 
-        document.getElementById('mathInput').value = ''; 
-        document.getElementById('intentInput').value = ''; 
-        document.getElementById('statusText').innerText = "STANDBY"; 
-        document.getElementById('statusText').style.color = "#ffffff"; 
-        document.getElementById('aiOutputText').innerText = "System initialization complete. Awaiting formula and intent block execution."; 
-     }
 </script>
-
-</body>
-</html>
