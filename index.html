@@ -1,3 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonance Matrix Interface</title>
+    <style>
+        body {
+            background-color: #11141a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #1a1f2c;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 1px solid #2d3748;
+        }
+        h1 { margin-top: 0; color: #f7fafc; font-size: 24px; }
+        .subtitle { color: #718096; margin-bottom: 25px; font-size: 14px; }
+        .domain-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .domain-btn {
+            background: #2d3748;
+            border: 1px solid #4a5568;
+            color: #a0aec0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .domain-btn.active {
+            background: #3182ce;
+            border-color: #63b3ed;
+            color: white;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #cbd5e0;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            background: #0f1219;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            color: #e2e8f0;
+            padding: 12px;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 13px;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #3182ce;
+        }
+        .btn-submit {
+            background: #38a169;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover { background: #2f855a; }
+        .output-box {
+            margin-top: 25px;
+            background: #0f1219;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            padding: 20px;
+        }
+        .status-header {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .output-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Resonance Matrix Alignment Portal</h1>
+    <div class="subtitle" id="activeDomainDisplay">Current Track: General Space-Time Matrix</div>
+
+    <label>Select Matrix Context Domain</label>
+    <div class="domain-row">
+        <button class="domain-btn active" onclick="setDomain('General Space-Time Matrix', this)">General Space-Time Matrix</button>
+        <button class="domain-btn" onclick="setDomain('Fluid Space-Time Tracking', this)">Fluid Space-Time Tracking</button>
+        <button class="domain-btn" onclick="setDomain('Custom Coordinate Audit', this)">Custom/Other Field</button>
+    </div>
+
+    <div class="input-group">
+        <label for="mathInput">AI Input Field A (Raw Data Arrays / Coordinates)</label>
+        <textarea id="mathInput" placeholder="Enter coordinates, vectors, or raw numeric matrices here..."></textarea>
+    </div>
+
+    <div class="input-group">
+        <label for="intentInput">AI Input Field B (Operational Intent / Observed Variances)</label>
+        <textarea id="intentInput" placeholder="Describe the specific variance tracking, anomalies, or analytical focus here..."></textarea>
+    </div>
+
+    <button class="btn-submit" onclick="executeAdaptiveAudit()">Verify & Compute Gaps</button>
+
+    <div class="output-box">
+        <div class="status-header" id="statusText" style="color: #a0aec0;">System Standby</div>
+        <div class="output-text" id="aiOutputText">Awaiting execution run... Data coordinates and structural parameters will stream here upon launch.</div>
+    </div>
+</div>
+
 <script>
     // System Domain State Tracker
     let activeDomain = "General Space-Time Matrix";
@@ -62,3 +203,6 @@
         });
     }
 </script>
+
+</body>
+</html>
