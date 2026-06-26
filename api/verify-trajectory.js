@@ -1,15 +1,25 @@
-import { GoogleGenAI } from 'https://esm.run/@google/genai';
+import { GoogleGenAI } from '@google/genai';
 
 export default async function handler(req, res) {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: "Unable to reach hidden vault" });
+  // Ensure strict CORS handling or preflight adjustments if necessary
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
   }
 
-  const ai = new GoogleGenAI({ apiKey: apiKey });
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ analysisOutput: "System Error: GEMINI_API_KEY environment variable is missing on Vercel." });
+  }
 
   try {
     const { domain, mathData, intent } = req.body || {};
+    
+    // Fallback if inputs are completely stripped
+    if (!mathData || !intent) {
+      return res.status(400).json({ analysisOutput: "System Error: Missing required input field payloads." });
+    }
+
+    const ai = new GoogleGenAI({ apiKey: apiKey });
     
     const contextPrompt = `
       Operational Context: You are executing an alignment audit inside the Resonance Matrix Cosmological Model.
@@ -29,6 +39,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ analysisOutput: response.text });
 
   } catch (error) {
-    return res.status(500).json({ analysisOutput: `Backend Execution Fault: ${error.message}` });
+    // Catch any internal runtime failures explicitly and return as clean JSON
+    return res.status(500).json({ analysisOutput: `Internal Engine Execution Fault: ${error.message}` });
   }
 }
