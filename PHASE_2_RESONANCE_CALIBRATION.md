@@ -1,1 +1,71 @@
-# Phase 2: Frequency Calibration and Navigation Unification ## 2.1 Objective Phase 2 develops a navigation framework based on simultaneous frequency, phase, Doppler, and signal-arrival measurements. The purpose is to determine whether six spatially separated sensors can improve the calculation of a craft's: - position, - velocity, - orientation, - direction of travel, - and position relative to surrounding celestial bodies or reference transmitters. This phase does not attempt to define propulsion, gravity, or the underlying physical nature of space. Its scope is limited to navigation and positional measurement. ## 2.2 Unified Navigation Mechanism Conventional navigation systems often separate ranging, Doppler tracking, directional sensing, inertial measurement, and orbital prediction into distinct analytical processes. This framework combines those measurements into a single continuously updated navigation solution. The operational principle is: 1. **Frequency change constrains relative motion.** A measured Doppler shift provides information about the relative radial velocity between the craft and a reference source. 2. **Signal-arrival difference constrains direction.** A signal reaching spatially separated sensors at slightly different times provides information about the direction from which the signal arrived. 3. **Phase difference refines angular measurement.** Differences in signal phase across a known sensor baseline can improve the estimated direction of a reference source. 4. **Multiple reference sources constrain position.** Measurements from several known celestial or artificial transmitters can be combined to determine the craft's position relative to those sources. 5. **Repeated measurements constrain trajectory.** A sequence of position and velocity measurements produces a continuously updated estimate of the craft's path. Frequency is therefore not treated as a complete coordinate by itself. Instead, frequency, phase, Doppler shift, signal-arrival time, and sensor geometry provide separate constraints that are combined to calculate position. ## 2.3 Six-Sensor Navigation Geometry The system uses six directional cross-axis sensors distributed across the craft. Because the sensors occupy different physical locations, each sensor receives the same external signal under slightly different geometric conditions. For a received signal, the system may compare: - measured frequency, - Doppler shift, - carrier phase, - signal-arrival time, - signal strength, - and direction of arrival. The known physical separation between sensors forms a set of onboard measurement baselines. For sensors located at positions: $$ \mathbf{b}_1,\mathbf{b}_2,\ldots,\mathbf{b}_6 $$ the arrival-time difference between two sensors may be represented as: $$ \Delta\tau_{ij} = \frac{(\mathbf{b}_i-\mathbf{b}_j)\cdot\hat{\mathbf{s}}}{c} + \epsilon_{\tau} $$ where: - \(\Delta\tau_{ij}\) is the measured arrival-time difference between sensors \(i\) and \(j\), - \(\mathbf{b}_i-\mathbf{b}_j\) is the known baseline between the sensors, - \(\hat{\mathbf{s}}\) is the estimated direction of the incoming signal, - \(c\) is the propagation speed of the signal, - and \(\epsilon_{\tau}\) represents timing and measurement error. The corresponding phase difference may be represented as: $$ \Delta\phi_{ij} = \frac{2\pi}{\lambda} (\mathbf{b}_i-\mathbf{b}_j)\cdot\hat{\mathbf{s}} + 2\pi N + \epsilon_{\phi} $$ where: - \(\lambda\) is the signal wavelength, - \(N\) is the integer phase ambiguity, - and \(\epsilon_{\phi}\) represents phase-measurement error. The use of multiple sensor pairs creates redundant directional constraints. Those constraints can be compared against one another to detect calibration errors, local interference, or inconsistent measurements. ## 2.4 Navigation State Model The navigation system estimates a state vector: $$ \mathbf{x} = \begin{bmatrix} \mathbf{r} \\ \mathbf{v} \\ \mathbf{q} \\ \mathbf{b}_c \end{bmatrix} $$ where: - \(\mathbf{r}\) is the craft's position, - \(\mathbf{v}\) is its velocity, - \(\mathbf{q}\) is its orientation, - and \(\mathbf{b}_c\) represents clock and instrument biases. The complete measurement set may be represented as: $$ \mathbf{y} = \begin{bmatrix} \Delta f_1 \\ \vdots \\ \Delta f_n \\ \Delta\phi_1 \\ \vdots \\ \Delta\phi_m \\ \Delta\tau_1 \\ \vdots \\ \Delta\tau_p \end{bmatrix} $$ where: - \(\Delta f\) represents measured frequency or Doppler differences, - \(\Delta\phi\) represents phase differences, - and \(\Delta\tau\) represents signal-arrival-time differences. The relationship between the observations and the unknown navigation state is: $$ \mathbf{y} = h(\mathbf{x},\mathbf{s}_1,\mathbf{s}_2,\ldots,\mathbf{s}_n) + \boldsymbol{\epsilon} $$ where: - \(h\) is the navigation measurement model, - \(\mathbf{s}_1,\mathbf{s}_2,\ldots,\mathbf{s}_n\) describe the known or estimated states of the reference sources, - and \(\boldsymbol{\epsilon}\) contains timing, propagation, calibration, and sensor errors. The navigation solution is the state that best explains the complete measurement set: $$ \hat{\mathbf{x}} = \arg\min_{\mathbf{x}} \left( \mathbf{y}-h(\mathbf{x}) \right)^T \mathbf{R}^{-1} \left( \mathbf{y}-h(\mathbf{x}) \right) $$ where \(\mathbf{R}\) represents the estimated measurement-error covariance. ## 2.5 Dynamic Frequency Calibration The term \(U_i\) should not represent propulsion, internal pressure, or a self-tuning physical state of the craft. Within the navigation framework, \(U_i\) is more appropriately defined as the expected or predicted signal state at sensor \(i\). The observed measurement is represented by \(V_i\). The difference: $$ V_i-U_i $$ is therefore a navigation residual. It describes the difference between: - what the sensor measured, - and what the current navigation model predicted that sensor should measure. The six-sensor balance equation: $$ \sum_{i=1}^{6}(V_i-U_i)(\theta_i)=0 $$ can therefore be interpreted as a residual-balancing condition. Here: - \(V_i\) is the observed frequency, phase, Doppler, or timing measurement at sensor \(i\), - \(U_i\) is the predicted measurement at sensor \(i\), - and \(\theta_i\) is the directional or geometric weighting assigned to that sensor. A nonzero residual indicates that the current estimated position, velocity, orientation, timing calibration, or source model does not fully explain the observations. The system then updates the estimated navigation state until the combined weighted residual is minimized. Because the sensors are distributed across three axes, the system can distinguish among several possible causes of error: - translational position error, - velocity error, - rotational orientation error, - clock drift, - sensor calibration error, - propagation disturbance, - or reference-source uncertainty. The purpose of dynamic calibration is not to force every sensor measurement to become identical. It is to determine whether the differences among the sensors are consistent with the craft's predicted position and orientation. ## 2.6 Reference Sources The system may use several categories of navigation references: ### Artificial Transmitters Signals from known spacecraft, satellites, planetary beacons, or ground-based stations may provide calibrated frequency, timing, and positional references. ### Natural Radio Sources Stable astronomical radio sources may provide directional references when their sky positions and signal characteristics are sufficiently well established. ### Pulsed Sources Periodic astronomical sources may provide signal-arrival-time references when their timing behavior can be predicted accurately. ### Planetary Emissions Natural emissions from planets may be evaluated as supplementary references. However, they should only be used for precision navigation if the selected emission can be shown to possess: - sufficient stability, - a well-defined source location, - predictable timing or spectral behavior, - adequate signal strength, - and a measurable relationship to the position of the observing craft. The presence of a measurable planetary frequency does not, by itself, establish a positional coordinate. Its navigational value must be demonstrated through calibration and repeatable observation. ## 2.7 Relationship to Phase 1 Phase 1 and Phase 2 provide complementary navigation information. Phase 1 retains: - historical path data, - prior position estimates, - velocity history, - orbital models, - and conventional reference maps. Phase 2 adds: - live frequency measurements, - differential Doppler, - phase comparison, - signal-arrival-time comparison, - and cross-axis sensor geometry. The combined system compares the predicted trajectory from Phase 1 with the live measurement residuals from Phase 2. This creates a continuously corrected navigation estimate rather than relying exclusively on either historical trajectory prediction or instantaneous sensor readings. ## 2.8 Validation Requirements The framework cannot claim greater accuracy than existing navigation systems until that claim is demonstrated quantitatively. Validation should include: 1. **Baseline analysis** Determine whether the physical distance between onboard sensors is sufficient to produce measurable phase and arrival-time differences. 2. **Clock analysis** Determine the timing precision required to resolve the intended positional accuracy. 3. **Phase-ambiguity resolution** Establish how the system will distinguish between multiple possible phase-cycle solutions. 4. **Source-stability analysis** Measure the timing, frequency, and spatial stability of each proposed reference source. 5. **Propagation analysis** Account for plasma, atmosphere, multipath, interference, and other signal distortions. 6. **Error-budget construction** Quantify the contribution of every major error source. 7. **Comparison testing** Compare the six-sensor solution with established ranging, Doppler, optical-navigation, interferometric, and inertial-navigation methods. 8. **Repeatability testing** Demonstrate that the same known position produces the same calculated result within a defined uncertainty range. The primary research question for Phase 2 is therefore: > Can six spatially separated onboard sensors combine frequency, phase, Doppler, and signal-arrival measurements to produce a more accurate or more autonomous navigation solution than current onboard methods? Until comparative testing answers that question, increased accuracy remains a proposed capability rather than an established result.
+## 2.5 Dynamic Frequency Calibration
+
+### Purpose
+
+Dynamic frequency calibration compares predicted sensor observations with measured observations to refine the estimated navigation state.
+
+This section is limited to navigation-state estimation. It does not address propulsion or the underlying physical nature of space.
+
+---
+
+### Navigation Residual
+
+Let
+
+$$
+V_i
+$$
+
+represent the measured observation at sensor *i*, and let
+
+$$
+U_i
+$$
+
+represent the predicted observation generated by the navigation model.
+
+The measurement residual is
+
+$$
+V_i-U_i.
+$$
+
+This residual quantifies the disagreement between observation and prediction.
+
+---
+
+### Residual Balance Equation
+
+The six-sensor balance equation is
+
+$$
+\sum_{i=1}^{6}(V_i-U_i)(\theta_i)=0
+$$
+
+where
+
+- \(V_i\) is the measured sensor observation,
+- \(U_i\) is the predicted sensor observation,
+- \(\theta_i\) is the directional weighting for sensor \(i\).
+
+A non-zero residual indicates that the current navigation state does not fully explain the observations.
+
+The navigation solution is updated until the weighted residual is minimized.
+
+---
+
+### Sources of Residual Error
+
+Residuals may result from
+
+- position error,
+- velocity error,
+- attitude error,
+- clock drift,
+- sensor calibration error,
+- propagation effects,
+- reference-source uncertainty.
+
+The objective is not to eliminate measurement differences.
+
+The objective is to determine whether the observed differences are consistent with the estimated navigation state.
