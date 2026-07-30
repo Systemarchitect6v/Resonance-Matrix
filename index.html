@@ -122,13 +122,13 @@
     </div>
 
     <div class="input-group">
-        <label for="mathInput">AI Input Field A (Raw Data Arrays / Coordinates)</label>
-        <textarea id="mathInput" placeholder="Enter coordinates, vectors, or raw numeric matrices here..."></textarea>
+        <label for="mathInput">AI Input Field A (Raw Data Arrays / Vector Magnitudes)</label>
+        <textarea id="mathInput" placeholder="Enter comma or space separated numbers (e.g., 12.4, 8.1, 15.0, 3.2, 9.7, 6.4)..."></textarea>
     </div>
 
     <div class="input-group">
-        <label for="intentInput">AI Input Field B (Operational Intent / Observed Variances)</label>
-        <textarea id="intentInput" placeholder="Describe the specific variance tracking, anomalies, or analytical focus here..."></textarea>
+        <label for="intentInput">AI Input Field B (Operational Intent / Substrate Observational Focus)</label>
+        <textarea id="intentInput" placeholder="Describe specific resonance parameters, tracking intent, or orbital variance notes..."></textarea>
     </div>
 
     <button class="btn-submit" onclick="executeAdaptiveAudit()">Verify & Compute Gaps</button>
@@ -140,67 +140,65 @@
 </div>
 
 <script>
-    // System Domain State Tracker
     let activeDomain = "General Space-Time Matrix";
 
-    // Domain Selector Activation Matrix
     function setDomain(domainName, element) {
         activeDomain = domainName;
-        
-        // Remove active class from all buttons
         const buttons = document.querySelectorAll('.domain-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to clicked button
         element.classList.add('active');
-        
-        // Update the functional UI sub-header to display active track
         document.getElementById('activeDomainDisplay').innerText = `Current Track: ${activeDomain}`;
     }
 
-    // Modernized Adaptive Audit Engine Connection
     function executeAdaptiveAudit() {
         const fieldA = document.getElementById('mathInput').value.trim(); 
         const fieldB = document.getElementById('intentInput').value.trim(); 
         
         if (!fieldA || !fieldB) { 
-            document.getElementById('aiOutputText').innerHTML = `System Alert: Input fields require population to perform a mathematical parameter verification.`; 
+            document.getElementById('aiOutputText').innerText = `System Alert: Both input fields require data population to perform verification.`; 
             return; 
         }
         
-        document.getElementById('statusText').innerText = "TRANSMITTING DATA TO SECURE VAULT CO-CALCULATOR..."; 
+        document.getElementById('statusText').innerText = "COMPUTING MATRIX RESONANCE & EQUILIBRIUM..."; 
         document.getElementById('statusText').style.color = "#3498db";
-        document.getElementById('aiOutputText').innerText = "Establishing secure connection, validating input dimensions, and parsing custom coordinate frameworks...";
 
-        fetch('/api/verify-trajectory', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-                domain: activeDomain, 
-                mathData: fieldA, 
-                intent: fieldB 
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            // If the backend sent an analytical output, display it directly
-            if (data.analysisOutput) {
-                document.getElementById('statusText').innerText = "DATA AUDIT COMPLETE & VARIANCE MEASURED"; 
-                document.getElementById('statusText').style.color = "#55efc4";
-                document.getElementById('aiOutputText').innerText = data.analysisOutput;
-            } else if (data.error) {
-                throw new Error(data.error);
-            } else {
-                throw new Error("Unrecognized data format returned from server.");
+        // Parse numerical values from Field A
+        const numbers = fieldA.match(/[-+]?[0-9]*\.?[0-9]+/g);
+        const parsedValues = numbers ? numbers.map(Number) : [];
+
+        setTimeout(() => {
+            if (parsedValues.length === 0) {
+                document.getElementById('statusText').innerText = "CALCULATION WARNING"; 
+                document.getElementById('statusText').style.color = "#e67e22";
+                document.getElementById('aiOutputText').innerText = `Domain: ${activeDomain}\nIntent Focus: ${fieldB}\n\nNote: Field A contains descriptive text without numeric vectors. Please include numerical inputs for quantitative field resolution.`;
+                return;
             }
-        })
-        .catch(error => {
-            document.getElementById('statusText').innerText = "EXECUTION EXCEPTION"; 
-            document.getElementById('statusText').style.color = "#ff7675";
-            document.getElementById('aiOutputText').innerText = `System Alert: The server responded, but encountered an issue processing the request.\n\nDetails: ${error.message}`;
-        });
+
+            // Client-side field calculation logic
+            const sum = parsedValues.reduce((a, b) => a + b, 0);
+            const mean = sum / parsedValues.length;
+            const netResultant = Math.sqrt(parsedValues.reduce((acc, v) => acc + (v * v), 0));
+            const fieldVariance = parsedValues.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / parsedValues.length;
+
+            const auditReport = `=== RESONANCE AUDIT REPORT ===
+Context Domain: ${activeDomain}
+Operational Intent: "${fieldB}"
+
+Parsed Vector Array (${parsedValues.length} components):
+[${parsedValues.join(', ')}]
+
+Computed Matrix Metrics:
+  • Resultant Field Vector Magnitude: ${netResultant.toFixed(4)}
+  • Mean Scalar Potential: ${mean.toFixed(4)}
+  • Substrate Resonance Variance: ${fieldVariance.toFixed(4)}
+  • Net Matrix Equilibrium: ${Math.abs(sum) < 0.001 ? "Balanced (0 NET DRIFT)" : "Unbalanced Vector Shift"}
+
+Status: System validated cleanly via local browser execution.`;
+
+            document.getElementById('statusText').innerText = "DATA AUDIT COMPLETE & VARIANCE MEASURED"; 
+            document.getElementById('statusText').style.color = "#55efc4";
+            document.getElementById('aiOutputText').innerText = auditReport;
+        }, 300);
     }
 </script>
 
