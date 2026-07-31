@@ -28,10 +28,13 @@ Markdown
 To ground the comparison matrix, this schematic illustrates exactly how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Systemarchitect6v/Resonance-Matrix/main/watermarked_img_9027829631222610453.png" alt="6-Vector Continuous Medium Schematic" width="90%" style="pointer-events: none;">
+  <a href="javascript:void(0);" style="cursor: default; pointer-events: none;">
+    <img src="https://raw.githubusercontent.com/Systemarchitect6v/Resonance-Matrix/main/watermarked_img_9027829631222610453.png" alt="6-Vector Continuous Medium Schematic" width="90%">
+  </a>
 </p>
 
 > **Note:** As visualized, the "Legacy Vacuum Narrative" forces the system to experience the current as a disruptive *external error vector* (red lines), triggering computational lag and recalculation loops. The "6-Vector Ontology" proves the body is immersed in, and a structural extension of, the *continuous 3D medium*. The resolved tracking angle ($\theta_i$) is the instantaneous mathematical resolution that keeps the system in **Zero (Dynamic Equilibrium)** at the live microsecond.
+---
 ---
 Markdown
 ## 3. The Foundational 3D Proof (The Florida Current)
