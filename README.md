@@ -32,12 +32,20 @@ To ground the comparison matrix, this schematic illustrates exactly how the inte
 ## Visualizing the Architectural Shift: Vacuum vs. Medium
 To ground the comparison matrix, this schematic illustrates exactly how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
 
+
+---
+## Visualizing the Architectural Shift: Vacuum vs. Medium
+To ground the comparison matrix, this schematic illustrates exactly how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
+
+---
+## Visualizing the Architectural Shift: Vacuum vs. Medium
+To ground the comparison matrix, this schematic illustrates exactly how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
+
 <p align="center">
   <img src="watermarked_img_9027829631222610453.png" alt="6-Vector Continuous Medium Schematic" width="90%">
 </p>
 
 > **Note:** As visualized, the "Legacy Vacuum Narrative" forces the system to experience the current as a disruptive *external error vector* (red lines), triggering computational lag and recalculation loops. The "6-Vector Ontology" proves the body is immersed in, and a structural extension of, the *continuous 3D medium*. The resolved tracking angle ($\theta_i$) is the instantaneous mathematical resolution that keeps the system in **Zero (Dynamic Equilibrium)** at the live microsecond.
----
 ---
 Markdown
 ## 3. The Foundational 3D Proof (The Florida Current)
