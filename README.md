@@ -22,18 +22,14 @@ To eliminate systemic friction in software architecture, we must translate legac
 | **The Reaction to Change:** The software encounters sudden friction, registers an error spike, lags behind reality, and must execute a recalculation loop. | **The Reaction to Change:** The system updates inclusively because the body is fully immersed in, and a structural extension of, the shifting medium. |
 ---
 
+https://github.com/Systemarchitect6v/Resonance-Matrix/issues/1
 Markdown
 ---
 ## Visualizing the Architectural Shift: Vacuum vs. Medium
 To ground the comparison matrix, this schematic illustrates exactly how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
 
-<p align="center">
-  <a href="javascript:void(0);" style="cursor: default; pointer-events: none;">
-    <img src="https://raw.githubusercontent.com/Systemarchitect6v/Resonance-Matrix/main/watermarked_img_9027829631222610453.png" alt="6-Vector Continuous Medium Schematic" width="90%">
-  </a>
-</p>
+*Visual Schematic: Vacuum Narrative vs. 6-Vector Continuous Medium Framework*
 
-> **Note:** As visualized, the "Legacy Vacuum Narrative" forces the system to experience the current as a disruptive *external error vector* (red lines), triggering computational lag and recalculation loops. The "6-Vector Ontology" proves the body is immersed in, and a structural extension of, the *continuous 3D medium*. The resolved tracking angle ($\theta_i$) is the instantaneous mathematical resolution that keeps the system in **Zero (Dynamic Equilibrium)** at the live microsecond.
 ---
 ---
 Markdown
