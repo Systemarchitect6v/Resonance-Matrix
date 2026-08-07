@@ -1,120 +1,531 @@
-Markdown
-# 6-Vector Ontological Framework: Dynamic Equilibrium in a Continuous Medium
+# 6-Vector Ontological Framework
+## Dynamic Equilibrium in a Continuous-Medium Navigation Model
+
+---
 
 ## About the Architect & Methodology
-This framework and repository represent a Human-AI structural collaboration. The system ontology, real-world navigational parameters, and multi-dimensional tracking logic were conceived, directed, and calibrated by a Systems Ontologist utilizing advanced pattern recognition to resolve systemic engineering friction. Artificial intelligence was utilized strictly as a high-speed calibration tool to map the mathematical syntax. This project serves as a living proof-of-work portfolio for human-steered AI alignment and systemic architectural design.
+
+This repository documents the development of a proposed computational framework for navigation, tracking, and state estimation.
+
+The framework began with an ontological question:
+
+**What assumptions are embedded in the way a navigation system represents the relationship between a moving body and its surrounding environment?**
+
+Rather than beginning by modifying an existing estimator, the development process began by examining those underlying assumptions and then translating the resulting conceptual changes into mathematical and software structures.
+
+The system ontology, navigational parameters, and six-component state logic were conceived and directed by the author. Artificial intelligence has been used as a development tool for mathematical notation, software structuring, technical organization, and iterative review.
+
+This repository serves as a living proof-of-work record documenting the progression from conceptual model to an architecture capable of controlled numerical testing.
 
 ---
 
-## 1. The Ontological Audit
-This project executes a precise ontological vocabulary correction to align current engineering outputs with their actual physical mechanics. Existing systems and field hardware function with high empirical accuracy because their performance is already physically bound to the mechanics of the universe; this repository provides the structural language to match that reality.
+# 1. The Ontological Audit
 
-By replacing legacy narrative fictions—such as treating physical variations as "noise," "interferometry errors," or "anomalous drift"—with exact structural terms, the mathematics and the language finally achieve alignment. This shifts the software narrative away from the abstraction of an isolated vacuum and anchors it firmly within a continuous, structured 3-dimensional medium.
----
-Markdown
-## 2. The Structural Comparison Matrix
-To eliminate systemic friction in software architecture, we must translate legacy narrative placeholders into precise physical coordinates. This table maps the direct alignment from standard vacuum shorthand to the continuous 3D medium framework:
+Modern navigation systems are highly successful engineering systems. They use coordinate frames, sensor models, disturbance models, estimation algorithms, filtering, and correction processes to produce accurate state estimates from imperfect measurements.
 
-| Column 1: Legacy Vacuum Narrative (The Friction) | Column 2: 6-Vector Ontology (The Alignment) |
-| :--- | :--- |
-| **The Static Assumption:** Space is an empty void or vacuum. Variations in data are categorized as "noise," "interferometry errors," or "anomalous drift." | **The Continuous Assumption:** Space is a full, continuous, structured 3D medium substrate with variable densities and vibrational resonance. |
-| **The Shorthand Label:** "System Tracking Error / Drift Calculation." | **The Vector Label:** The primary tracking coordinate ($\theta_i$) indicating the system's live geometric relationship to the medium. |
-| **The Reaction to Change:** The software encounters sudden friction, registers an error spike, lags behind reality, and must execute a recalculation loop. | **The Reaction to Change:** The system updates inclusively because the body is fully immersed in, and a structural extension of, the shifting medium. |
----
+This framework does **not** dispute that empirical success.
 
----
-## Visualizing the Architectural Shift: Vacuum vs. Medium
-To ground the comparison matrix, this schematic illustrates details on how the interaction between system intent, the environmental medium, and the mathematical resolution changes between the two paradigms.
+Instead, it asks whether some quantities conventionally represented as disturbance, residual error, drift, or external forcing can be represented more directly as part of the computational relationship between:
 
-<p align="center">
-  https://github.com/Systemarchitect6v/Resonance-Matrix/issues/2
-</p>
+- the surrounding environment,
+- the system's commanded or intentional state,
+- and the resulting motion of the system.
 
-> **Note:** As visualized, the "Legacy Vacuum Narrative" forces the system to experience the current as a disruptive *external error vector*, triggering computational lag and recalculation loops. The "6-Vector Ontology" proves the body is immersed in, and a structural extension of, the *continuous 3D medium*. The resolved tracking angle ($\theta_i$) is the instantaneous mathematical resolution that keeps the system in **Zero (Dynamic Equilibrium)** at the live microsecond.
----
----
-Markdown
-## 3. The Foundational 3D Proof (The Florida Current)
-To demonstrate the continuous 3D medium framework, we look directly at verified empirical data from terrestrial oceanography. This is not an abstract mathematical exercise; it is an immediate demonstration of nature performing the calculation.
+The proposed adjustment is therefore primarily architectural.
 
-### A. The Raw Volumetric Data
-According to long-term NOAA research measurements, the Florida Current carries a baseline volume transport of **32.4 Sverdrups** ($1\text{ Sv} = 1,000,000\text{ m}^3/\text{s}$) as it cuts through the tight bottleneck of the Florida Strait. As the current travels north, escapes the constraint of the channel, and reaches Cape Hatteras, its volume transport scales up to **54.2 Sverdrups**.
+Rather than treating the environment only as an external disturbance acting on an otherwise isolated state, the framework introduces an explicit **environmental state vector** and evaluates it simultaneously with the system's intentional state.
 
-### B. The 3D Nature of the Medium
-Mainstream text narratives treat this massive volumetric increase as a localized regional anomaly. The 6-Vector framework proves it is a predictable geometric scaling of a continuous, deep, three-dimensional fluid volume. The current is not a flat line on a map; it is a massive vertical and horizontal river shifting in density, depth, and pressure as it interacts with the physical contours of the ocean floor.
+The question being tested is:
 
-### C. The Equation in Motion
-Before any human-made body enters the water, the medium itself balances its own internal pressures across three dimensions. We apply the core architectural equation:
-
-$$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
-
-In this natural state, the incoming volume vector ($\mathbf{V}_i$) and the outgoing volume vector ($\mathbf{U}_i$) are bound entirely to the physical angles and boundary constraints ($\theta_i$) of the earth's geography. 
-
-The change from **32.4 Sv** to **54.2 Sv** is the exact numerical resolution required to keep the equation balanced at **Zero (Dynamic Equilibrium)** as the fluid medium shifts through space. The ocean is executing the math naturally to maintain systemic balance.
-
----
-Markdown
-## 4. The Submerged Body (The Human Interaction)
-Having established the baseline 3D volumetric structure of the natural medium, we take the next logical step: introducing a human-made force interacting within that parameter. We prove that a traversing body does not operate in an isolated vacuum, but is entirely integrated into the structural math of the medium it occupies.
-
-### A. The Integrated Body
-When a vessel enters the Florida Current, its hull is physically submerged inside that deep 32.4 Sv to 54.2 Sv volumetric gradient. Traditional navigation models treat the ship as an isolated object moving through empty space, viewing the current as an external "error force" or "shove" hitting the hull. 
-
-Our ontology proves that the vessel is physically immersed in the medium. If a helmsman sets a static steering course, the ship's actual track across the earth instantly contours to match the exact scaling of the water's volume and geographic angle.
-
-### B. The Resolution of Vectors
-We use the exact same architectural equation to resolve the vessel's live movement. Because the ship and the medium are part of the same continuous system, no separate "error correction" formula is required:
-
-$$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
-
-* **$\mathbf{V}_i$ (The Medium's Volumetric Pressure):** The live, three-dimensional volume vector of the current acting directly on the submerged hull.
-* **$\mathbf{U}_i$ (The Vessel's Intent):** The ship's internal propulsion force and steered heading.
-* **$\theta_i$ (The Angle of Transit):** The resulting real-time tracking angle (the true course over ground, resolving set and drift).
-
-### C. The Realization for the Developer
-Because **Zero is a dynamic equilibrium**, the ship's actual path across the earth is the exact numerical resolution required to keep this formula balanced at $0$. 
-
-If the current velocity increases or shifts direction, the value of $\mathbf{V}_i$ updates instantly. The vessel does not lag behind to run a lagging recalculation loop; its true tracking angle ($\theta_i$) updates at the exact same microsecond to maintain the balance. The movement of the body is a direct structural extension of the flow.
-
----
-Markdown
-## 5. The Dynamics of Instantaneous Fluctuation
-A critical bottleneck in modern software architecture—whether in navigation, telemetry tracking, or AI data streaming—is the lag time required to process sudden, unpredictable environmental changes. Traditional models must experience the friction, log an error, and run a recalculation loop to adjust. The 6-Vector ontology eliminates this lag entirely.
-
-### A. The Live Balance Scale
-Because our equation functions as a live, instantaneous balance scale, it does not require a time-lagged variable to process changes. The relationship is continuous and instantaneous:
-
-$$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
-
-If a localized storm, upwelling surge, or physical boundary shift causes a sudden spike in the medium's volumetric pressure ($\mathbf{V}_i$), the equation does not break, nor does it wait for an error log. 
-
-### B. Eliminating the Lag
-At the exact microsecond the medium shifts, the tracking angle ($\theta_i$) deforms and shapes itself fluidly to accommodate the new pressure gradient. The system streams the absolute present state of relation. 
-
-The "triangle of error" is revealed to be a legacy software illusion caused by bad vocabulary. In a true continuous medium framework, the system is always at **Zero (Dynamic Equilibrium)**, tracking the live flow in real time. This allows developers to build lightweight, zero-lag tracking architectures that respond to reality instantly.
+> **Can environmental and intentional states be represented within one normalized six-component computational state in a way that improves tracking, synchronization, or state estimation relative to a conventional estimator architecture?**
 
 ---
 
-Markdown
-## 6. The Stationary Body (The Static Sensor Example)
-To ensure this framework applies universally to all engineering architectures—not just moving vessels—we must address the stationary observer. If a technical device, tracking sensor, or telemetry array is physically bolted to a concrete pad on the Earth, it is still fully integrated into the continuous 3D medium.
+# 2. Proposed Contribution and Scope
 
-### A. The Stationary Intentional Vector ($\mathbf{U}_i$)
-A static device does not possess mechanical propulsion, but it does possess an active, directed state. Its orientation, localized geographic coordinates, and internal operational frequency constitute its active Intentional Vector ($\mathbf{U}_i$). It is consciously anchored to a specific orientation to interface with the medium.
+This work does not propose six-degree-of-freedom mechanics as novel.
 
-### B. The Medium's Continuous Motion ($\mathbf{V}_i$)
-The concrete pad may be stationary relative to the dirt, but the entire system is immersed in a continuous, spatial substrate that is constantly rotating, shifting in density, and experiencing vibrational resonance. 
+It proposes a computational architecture for representing environmental and intentional six-component states within a common normalized state space, resolving their differential during the same update cycle, and testing whether this reduces software-induced translational-rotational phase separation relative to conventional estimator architectures.
 
-$$\sum_{i=1}^{6} (\mathbf{V}_i - \mathbf{U}_i)(\theta_i) = 0$$
+The proposed contribution is the combination of:
 
-When a static sensor experiences "background noise," "interferometry drift," or "thermal fluctuation," the software is actually witnessing the live volumetric movement of the medium ($\mathbf{V}_i$) interacting with the static calibration ($\mathbf{U}_i$) of the machine.
+1. an explicit environmental state vector **V**,
+2. an intentional or commanded state vector **U**,
+3. a normalized six-component differential,
+4. a resolving-coordinate state **θ**,
+5. and common-cycle computational evaluation of translational and rotational interactions.
 
-### C. The Application
-By realizing that "static noise" is actually a live vector relationship, developers do not need to build heavy software filters to screen it out. Instead, they can map the tracking angle ($\theta_i$) to instantly calibrate the machine to the live environmental substrate, turning what used to be called "errors" into highly accurate, real-time telemetry data.
+Standard 6-DOF kinematics, quaternion attitude propagation, rigid-body mechanics, Kalman filtering, and joint translational-rotational estimation are treated as established engineering practices rather than claimed innovations.
 
 ---
-Markdown
-## 7. Conclusion and Development Roadmap
-The 6-Vector Ontological Framework provides a pristine, frictionless alternative to legacy vacuum-based software narratives. By aligning the vocabulary of technological performance with the three-dimensional, continuous reality of nature, we eliminate computational lag, remove artificial error loops, and unlock true systemic optimization.
+
+# 3. Structural Comparison
+
+| Conventional Engineering Representation | Proposed 6-Vector Representation |
+|---|---|
+| Environmental effects may enter the navigation solution through disturbance models, sensor residuals, process noise, correction terms, or estimator updates. | Environmental influence is represented explicitly as a six-component state and compared directly with the system's six-component intentional state. |
+| Translational and rotational quantities may be represented through different state variables and mathematical structures before being incorporated into a unified solution. | Three translational and three rotational components are evaluated within the same normalized computational update. |
+| A state mismatch produces a residual that must be interpreted by the estimator or controller. | The state mismatch itself becomes a principal quantity evaluated by the proposed resolver architecture. |
+| Performance depends on the estimator, disturbance model, sensor quality, timing, and propagation model. | Performance remains dependent on those factors, while the architecture tests whether additional translational-rotational phase separation can be reduced. |
+
 ---
-*This repository is actively maintained and conceptually directed by the author as an open record of understanding, system ontology, and human-AI collaborative architecture.*
+
+# 4. The Foundational Observational Case: The Florida Current
+
+## 4.1 Raw Volumetric Data
+
+The original development of this framework used published NOAA Florida Current measurements as an observational starting point.
+
+The Florida Current transports approximately **32.4 Sverdrups** through the Florida Strait, where:
+
+$$
+1\ \text{Sv} = 1{,}000{,}000\ \text{m}^3/\text{s}
+$$
+
+Farther north, Gulf Stream transport near Cape Hatteras has been reported at approximately **54.2 Sverdrups**.
+
+These values were not used as proof of the proposed navigation architecture.
+
+They were used because they provide a real-world example of a large, continuously moving three-dimensional environmental system whose state changes substantially with geography, boundary conditions, inflow, and surrounding circulation.
+
+## 4.2 Why the Florida Current Was Useful
+
+A current is not adequately described as a single line drawn across a two-dimensional map.
+
+It possesses:
+
+- velocity,
+- direction,
+- depth,
+- density structure,
+- pressure gradients,
+- shear,
+- circulation,
+- and spatially varying boundary conditions.
+
+The Florida Current therefore provided a useful physical example for asking:
+
+> **What changes if a moving body's environment is represented as part of the state calculation rather than only as an external disturbance applied to the body?**
+
+The change from approximately **32.4 Sv** to **54.2 Sv** demonstrates that the surrounding flow state cannot be represented by one fixed scalar quantity along the complete trajectory.
+
+The environment itself changes spatially.
+
+---
+
+# 5. From Environmental Observation to the 6-Vector Architecture
+
+The proposed framework represents the interaction using three principal six-component quantities:
+
+- **V** — environmental state,
+- **U** — intentional or commanded state,
+- **θ** — resolving-coordinate state.
+
+The basic state differential is:
+
+$$
+\Delta V = V - U
+$$
+
+Because translational and rotational quantities have different physical units, the current software formulation normalizes the differential before combining the six components:
+
+$$
+\delta = D(V-U)
+$$
+
+where **D** is a normalization operator.
+
+The corresponding constraint residual is:
+
+$$
+R = \delta^T\theta
+$$
+
+or:
+
+$$
+R = \sum_{i=1}^{6}\delta_i\theta_i
+$$
+
+The target computational condition is:
+
+$$
+R \rightarrow 0
+$$
+
+A low value of **R** does not, by itself, demonstrate that the physical system is correctly modeled.
+
+Individual positive and negative components can cancel.
+
+For that reason, the current architecture also retains component-level diagnostics:
+
+$$
+e = \delta \odot \theta
+$$
+
+and:
+
+$$
+E = \|e\|_2
+$$
+
+The engineering question is therefore not simply whether the equation can be made to equal zero.
+
+The important question is whether the six-component representation produces a **better external state estimate** when compared against independently measured ground truth and a conventional estimator.
+
+---
+
+# 6. The Submerged Body: Introducing the Vessel
+
+The Florida Current example becomes relevant to navigation when a vessel is introduced into the flow.
+
+A vessel moving through the current has both:
+
+1. an internally generated or commanded state, and
+2. an environmental state influencing its trajectory.
+
+The proposed architecture represents those explicitly.
+
+## 6.1 Environmental State — V
+
+The environmental vector represents the mapped effect of the surrounding environment on the six-component dynamic state.
+
+Raw quantities such as current velocity, pressure, density, or shear cannot simply be inserted into **V**.
+
+They must first be transformed into quantities compatible with the system state being evaluated.
+
+## 6.2 Intentional State — U
+
+The intentional vector represents the commanded or internally generated state of the vessel.
+
+Depending on implementation, this may include:
+
+- commanded translational velocity,
+- commanded angular rate,
+- propulsion output mapped into state-rate quantities,
+- or controller-defined target motion.
+
+## 6.3 Resolving State — θ
+
+The resolving-coordinate vector represents the computational relationship used to evaluate the environmental-intentional differential.
+
+In the current engineering formulation, **θ_i is a resolver coefficient**.
+
+It should not automatically be interpreted as a literal geometric angle on every axis.
+
+---
+
+# 7. Course Over Ground as an Observable Result
+
+Consider a vessel commanded to maintain a particular heading while moving through a cross-current.
+
+The vessel may have:
+
+- a commanded heading,
+- a heading through the water,
+- and a course over ground.
+
+The difference between commanded motion and observed motion provides an externally measurable quantity against which the architecture can be tested.
+
+The framework does **not** assume that the calculated equilibrium residual proves the vessel's actual trajectory.
+
+Instead:
+
+> **The calculated state must ultimately be compared with independently observed position, velocity, heading, and course-over-ground data.**
+
+A practical validation experiment therefore compares:
+
+```text
+Conventional Estimator Output
+            vs.
+6-Vector Architecture Output
+            vs.
+Independent Ground Truth
+```
+
+using the same sensor and environmental inputs.
+
+---
+
+# 8. Dynamic Environmental Change
+
+One motivation for the architecture is the treatment of simultaneous environmental changes.
+
+Suppose a vessel experiences:
+
+- a change in current velocity,
+- a directional shear,
+- and a rotational moment
+
+during the same measurement interval.
+
+The architecture represents the resulting state difference as one normalized six-component differential:
+
+$$
+\delta = D(V-U)
+$$
+
+with components corresponding to three translational and three rotational state dimensions.
+
+The proposed advantage is **not** that physical or computational latency disappears.
+
+Sensor sampling, data buses, clock synchronization, numerical computation, actuator response, and estimator execution all require finite time.
+
+The testable hypothesis is narrower:
+
+> **If translational and rotational environmental effects are evaluated from the same timestamp and inside the same state cycle, the architecture may reduce additional software-induced phase separation between those quantities.**
+
+That hypothesis can be measured.
+
+---
+
+# 9. Translational and Rotational State
+
+The dynamic state is represented as:
+
+$$
+S =
+\begin{bmatrix}
+v_x \\
+v_y \\
+v_z \\
+\omega_x \\
+\omega_y \\
+\omega_z
+\end{bmatrix}
+$$
+
+where:
+
+- **v_x, v_y, v_z** are translational velocity components,
+- **ω_x, ω_y, ω_z** are body angular-rate components.
+
+These rotational state variables should not be confused with **fluid vorticity**.
+
+Fluid vorticity is a property of the environmental velocity field:
+
+$$
+\zeta = \nabla \times \mathbf{v}
+$$
+
+Environmental vorticity may influence the rotational state of a submerged or airborne vehicle, but an explicit physical mapping is required to convert that field quantity into vehicle angular acceleration or angular-rate response.
+
+This distinction is maintained in the current architecture.
+
+---
+
+# 10. Why Six Components?
+
+The six-component representation allows translational and rotational state differences to be evaluated together.
+
+| Components | State |
+|---|---|
+| 1–3 | Translational motion |
+| 4–6 | Rotational motion |
+
+This is not itself novel. Six-degree-of-freedom representations are standard engineering practice.
+
+The proposed distinction is the **environmental-intentional decomposition** applied across those six components.
+
+Instead of defining only the vehicle state:
+
+$$
+S
+$$
+
+the architecture explicitly distinguishes:
+
+$$
+V = \text{environmental state}
+$$
+
+$$
+U = \text{intentional state}
+$$
+
+and:
+
+$$
+\Delta V = V-U
+$$
+
+The normalized differential is then evaluated during the same computational cycle.
+
+---
+
+# 11. The Stationary-System Case
+
+The framework can also be examined for a stationary sensor or tracking system.
+
+For a stationary device:
+
+$$
+U \approx \text{commanded stationary state}
+$$
+
+The system may nevertheless experience changes in:
+
+- temperature,
+- vibration,
+- atmospheric conditions,
+- mechanical stress,
+- electromagnetic environment,
+- platform motion,
+- or sensor bias.
+
+The framework does **not** assume that all such variation represents motion of a universal physical medium.
+
+Instead, the architectural question remains:
+
+> **Can measurable environmental influences be represented explicitly as state variables rather than being handled exclusively as undifferentiated residual noise?**
+
+Some observed variation will remain stochastic noise.
+
+Some may arise from identifiable environmental causes.
+
+The purpose of the architecture is to preserve the possibility of distinguishing those categories rather than assuming in advance that every residual belongs to either one.
+
+---
+
+# 12. From the NOAA Example to an Engineering Benchmark
+
+The Florida Current measurements were an important **developmental test case**, but they are not a substitute for a navigation benchmark.
+
+The NOAA values demonstrate that the environmental system has measurable, spatially changing physical structure.
+
+They do not establish that the proposed six-vector resolver outperforms an existing estimator.
+
+The next engineering test is therefore a controlled comparison.
+
+## Proposed Benchmark
+
+Use one common dataset containing:
+
+- timestamped vehicle state data,
+- environmental current or wind measurements,
+- commanded motion,
+- inertial measurements,
+- position measurements,
+- attitude measurements,
+- and independently determined ground truth.
+
+### Baseline
+
+Run the data through a conventional estimator such as:
+
+- EKF,
+- UKF,
+- production navigation estimator,
+- or another documented state-estimation architecture.
+
+### Proposed Architecture
+
+Run the same input data through the normalized environmental-intentional six-state resolver.
+
+### Compare
+
+Measure:
+
+- position RMSE,
+- orientation RMSE,
+- course-over-ground error,
+- drift rate,
+- translational-rotational phase offset,
+- sensor-to-output latency,
+- numerical stability,
+- sensitivity to environmental transients,
+- and computational cost.
+
+---
+
+# 13. What Would Constitute Evidence?
+
+The architecture should not be considered successful merely because:
+
+$$
+R \approx 0
+$$
+
+The resolver is mathematically designed to reduce that residual.
+
+Meaningful evidence requires an **independent observable result**.
+
+Examples include:
+
+- lower ground-truth position error,
+- lower attitude error,
+- reduced measured phase offset,
+- lower drift rate,
+- improved environmental-transient response,
+- or equivalent accuracy at lower computational cost.
+
+This distinction separates:
+
+**internal mathematical consistency**
+
+from:
+
+**external engineering performance.**
+
+---
+
+# 14. Development Status
+
+The project has progressed through the following stages:
+
+```text
+1. Ontological audit
+        ↓
+2. Continuous-environment interpretation
+        ↓
+3. NOAA Florida Current observational case
+        ↓
+4. Environmental / intentional state decomposition
+        ↓
+5. Six-component software architecture
+        ↓
+6. Dimensional normalization and resolver formulation
+        ↓
+7. Conventional-estimator benchmark
+```
+
+Stages **1–6** establish the conceptual and computational architecture.
+
+Stage **7** is the critical engineering validation step.
+
+The current claim is deliberately limited:
+
+> **The framework has developed far enough to be implemented and benchmarked. Its performance advantage, if any, must now be established experimentally against an appropriate conventional estimator.**
+
+---
+
+# 15. Conclusion
+
+The 6-Vector Ontological Framework began with a conceptual question about how navigation software represents the relationship between a system and its environment.
+
+That inquiry produced a computational architecture in which environmental influence and system intent are represented explicitly as corresponding six-component states.
+
+The current formulation:
+
+- separates environmental state **V** from intentional state **U**,
+- evaluates their differential **ΔV**,
+- normalizes translational and rotational quantities before combining them,
+- processes all six components during the same state cycle,
+- preserves component-level residual information,
+- and produces an architecture that can be compared directly with conventional navigation estimators.
+
+The NOAA Florida Current example remains important because it provided the original real-world observational case that motivated the transition toward an explicitly represented environmental state.
+
+It should be understood as the **starting empirical case, not the final proof**.
+
+The next question is an engineering one:
+
+> **When both architectures receive the same real-world telemetry, does the six-vector environmental-intentional representation produce a measurably better navigation solution?**
+
+That question is testable.
+
+And that is the present purpose of this repository.
+
+---
+
+*This repository is actively maintained as an open record of the framework's conceptual development, mathematical formulation, software architecture, and progression toward controlled engineering validation.*
