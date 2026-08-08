@@ -1,0 +1,13 @@
+UPLOAD THESE PATHS INTO THE ROOT OF YOUR EXISTING Resonance-Matrix REPOSITORY:
+
+docs/index.html
+docs/styles.css
+docs/app.js
+docs/.nojekyll
+reference/six_vector_reference.py
+examples/sample_telemetry.csv
+tests/test_reference.py
+TEST_PLATFORM_README.md
+
+Then enable GitHub Pages from:
+Settings -> Pages -> Deploy from a branch -> main -> /docs

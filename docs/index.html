@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Preliminary experimental test platform for the 6-vector environmental-intentional state architecture.">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>6-Vector Preliminary Experimental Test Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <div class="eyebrow">RESONANCE MATRIX / PROOF-OF-WORK</div>
+      <h1>6-Vector Preliminary Experimental Test Platform</h1>
+      <p class="lead">
+        A deterministic, browser-local implementation of the environmental–intentional
+        six-component differential described in the navigation architecture.
+      </p>
+      <div class="badges" aria-label="Platform properties">
+        <span>Runs locally in browser</span>
+        <span>No API key</span>
+        <span>No data upload</span>
+        <span>No external libraries</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="notice strong">
+      <h2>Experimental status</h2>
+      <p>
+        This tool is for architectural inspection, numerical experimentation, and controlled comparison.
+        It is <strong>not</strong> a validated navigation estimator or flight/control system.
+        Inputs must already represent comparable rate-state quantities in a common frame and timestamp.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <div class="step">01</div>
+          <h2>Test context</h2>
+        </div>
+        <p>Context is recorded with results; it does not change the core equations.</p>
+      </div>
+
+      <label class="field-label">Matrix context domain</label>
+      <div class="domain-row" role="group" aria-label="Matrix context domain">
+        <button type="button" class="domain-btn active" data-domain="General Navigation / Tracking">General Navigation / Tracking</button>
+        <button type="button" class="domain-btn" data-domain="Fluid / Current Tracking">Fluid / Current Tracking</button>
+        <button type="button" class="domain-btn" data-domain="Custom Coordinate Audit">Custom / Other Field</button>
+      </div>
+
+      <div class="meta-grid">
+        <label>
+          <span>Test name</span>
+          <input id="testName" type="text" value="6-vector inspection run" maxlength="120">
+        </label>
+        <label>
+          <span>Common frame</span>
+          <select id="frame">
+            <option>BODY</option>
+            <option>NED</option>
+            <option>ENU</option>
+            <option>ECEF</option>
+            <option>CUSTOM</option>
+          </select>
+        </label>
+        <label>
+          <span>Timestamp / sample ID</span>
+          <input id="timestamp" type="text" value="sample-001" maxlength="120">
+        </label>
+      </div>
+
+      <div class="notice">
+        <strong>Input contract:</strong> V and U must use the same six channels, same timestamp,
+        same coordinate frame, and compatible units. Raw pressure, force, field strength, or sensor
+        counts must first be mapped through a physical model into comparable state/rate quantities.
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <div class="step">02</div>
+          <h2>Choose test mode</h2>
+        </div>
+      </div>
+      <div class="tabs" role="tablist">
+        <button type="button" id="singleTab" class="tab active" role="tab" aria-selected="true">Single update</button>
+        <button type="button" id="batchTab" class="tab" role="tab" aria-selected="false">Batch telemetry</button>
+      </div>
+    </section>
+
+    <section id="singleMode" class="panel">
+      <div class="section-heading">
+        <div>
+          <div class="step">03</div>
+          <h2>Single six-vector update</h2>
+        </div>
+        <p>Three translational rates + three angular rates.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="input-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Environmental / observed V</th>
+              <th>Intentional / commanded U</th>
+              <th>Scale s</th>
+              <th>θ₀</th>
+              <th>Unit</th>
+            </tr>
+          </thead>
+          <tbody id="inputRows"></tbody>
+        </table>
+      </div>
+
+      <div class="settings-grid">
+        <label>
+          <span>Regularization ε</span>
+          <input id="epsilon" type="number" value="1e-12" min="0" step="any">
+        </label>
+        <label>
+          <span>Near-zero threshold</span>
+          <input id="deltaThreshold" type="number" value="1e-10" min="0" step="any">
+        </label>
+        <label class="check-label">
+          <input id="useProjection" type="checkbox" checked>
+          <span>Project θ₀ onto δᵀθ = 0</span>
+        </label>
+        <label class="check-label">
+          <input id="enableCorrection" type="checkbox">
+          <span>Enable experimental correction interface</span>
+        </label>
+      </div>
+
+      <details id="correctionDetails">
+        <summary>Experimental correction gains Kᵢ</summary>
+        <p class="muted">
+          Disabled by default. The reference law is c = −K ⊙ e and S* = U + D⁻¹c.
+          This is a software test harness, not a validated controller.
+        </p>
+        <div id="gainInputs" class="six-grid"></div>
+      </details>
+
+      <div class="actions">
+        <button type="button" id="loadDemo" class="btn secondary">Load demonstration values</button>
+        <button type="button" id="runSingle" class="btn primary">Compute six-vector update</button>
+        <button type="button" id="clearSingle" class="btn ghost">Clear values</button>
+      </div>
+
+      <div id="singleError" class="error-box" hidden></div>
+
+      <section id="singleResults" class="results" hidden>
+        <div class="result-head">
+          <div>
+            <div class="step">RESULT</div>
+            <h2>Transparent calculation trace</h2>
+          </div>
+          <div class="actions compact">
+            <button type="button" id="copyJson" class="btn secondary">Copy JSON</button>
+            <button type="button" id="downloadJson" class="btn secondary">Download JSON</button>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <span>Pre-projection R₀</span>
+            <strong id="metricR0">—</strong>
+            <small>δᵀθ₀</small>
+          </div>
+          <div class="metric">
+            <span>Post-projection R</span>
+            <strong id="metricR">—</strong>
+            <small>Σeᵢ</small>
+          </div>
+          <div class="metric">
+            <span>Interaction norm E</span>
+            <strong id="metricE">—</strong>
+            <small>‖e‖₂</small>
+          </div>
+          <div class="metric">
+            <span>Mismatch norm G</span>
+            <strong id="metricG">—</strong>
+            <small>‖δ‖₂</small>
+          </div>
+        </div>
+
+        <div class="notice warning">
+          <strong>Interpretation boundary:</strong>
+          when θ projection is enabled, R is driven toward zero by construction.
+          A small R therefore demonstrates satisfaction of the implemented constraint, not independent
+          navigation accuracy. E, G, ground truth, baseline-estimator error, timing, and stability must
+          be evaluated separately.
+        </div>
+
+        <div class="table-wrap">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>ΔV = V − U</th>
+                <th>δ = ΔV / s</th>
+                <th>θ₀</th>
+                <th>θ*</th>
+                <th>e = δ ⊙ θ*</th>
+                <th>c</th>
+                <th>S*</th>
+              </tr>
+            </thead>
+            <tbody id="resultRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="batchMode" class="panel" hidden>
+      <div class="section-heading">
+        <div>
+          <div class="step">03</div>
+          <h2>Batch telemetry</h2>
+        </div>
+        <p>Run the same scales and resolver settings across a time series.</p>
+      </div>
+
+      <div class="batch-grid">
+        <div>
+          <label class="field-label" for="csvFile">Upload CSV</label>
+          <input id="csvFile" type="file" accept=".csv,text/csv">
+          <p class="muted">The file is read locally by your browser and is not uploaded anywhere.</p>
+        </div>
+        <div>
+          <label class="field-label" for="csvPaste">Or paste CSV</label>
+          <textarea id="csvPaste" rows="12" spellcheck="false" placeholder="time,vx,vy,vz,wx,wy,wz,ux,uy,uz,uwx,uwy,uwz"></textarea>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <label>
+          <span>Translational scale X</span>
+          <input class="batch-scale" data-i="0" type="number" value="1" min="1e-15" step="any">
+        </label>
+        <label>
+          <span>Translational scale Y</span>
+          <input class="batch-scale" data-i="1" type="number" value="1" min="1e-15" step="any">
+        </label>
+        <label>
+          <span>Translational scale Z</span>
+          <input class="batch-scale" data-i="2" type="number" value="1" min="1e-15" step="any">
+        </label>
+        <label>
+          <span>Angular scale X</span>
+          <input class="batch-scale" data-i="3" type="number" value="0.1" min="1e-15" step="any">
+        </label>
+        <label>
+          <span>Angular scale Y</span>
+          <input class="batch-scale" data-i="4" type="number" value="0.1" min="1e-15" step="any">
+        </label>
+        <label>
+          <span>Angular scale Z</span>
+          <input class="batch-scale" data-i="5" type="number" value="0.1" min="1e-15" step="any">
+        </label>
+      </div>
+
+      <details>
+        <summary>Batch θ₀ values</summary>
+        <div id="batchThetaInputs" class="six-grid"></div>
+      </details>
+
+      <div class="actions">
+        <button type="button" id="loadSampleCsv" class="btn secondary">Load sample telemetry</button>
+        <button type="button" id="runBatch" class="btn primary">Run batch</button>
+        <button type="button" id="downloadBatch" class="btn secondary" disabled>Download result CSV</button>
+      </div>
+
+      <div id="batchError" class="error-box" hidden></div>
+
+      <section id="batchResults" class="results" hidden>
+        <div class="metric-grid">
+          <div class="metric"><span>Rows processed</span><strong id="batchCount">—</strong><small>valid samples</small></div>
+          <div class="metric"><span>Mean G</span><strong id="batchMeanG">—</strong><small>normalized mismatch</small></div>
+          <div class="metric"><span>Max G</span><strong id="batchMaxG">—</strong><small>normalized mismatch</small></div>
+          <div class="metric"><span>Mean E</span><strong id="batchMeanE">—</strong><small>interaction magnitude</small></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-legend"><span>G mismatch norm</span><span>E interaction norm</span></div>
+          <canvas id="batchChart" width="1100" height="320" aria-label="Batch diagnostic plot"></canvas>
+        </div>
+
+        <div class="notice warning">
+          Batch diagnostics are internal model quantities. To claim improved navigation performance,
+          compare the same telemetry against independent ground truth and a defined estimator baseline.
+        </div>
+
+        <div class="table-wrap">
+          <table class="results-table compact-table">
+            <thead>
+              <tr><th>#</th><th>time</th><th>R₀</th><th>R</th><th>E</th><th>G</th></tr>
+            </thead>
+            <tbody id="batchRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel method">
+      <div class="section-heading">
+        <div>
+          <div class="step">METHOD</div>
+          <h2>What the platform computes</h2>
+        </div>
+      </div>
+      <div class="formula-grid">
+        <div><code>ΔV = V − U</code><p>Environmental/observed minus intentional/commanded state.</p></div>
+        <div><code>δ = D(V − U)</code><p>Dimensionless normalized differential; D = diag(1/sᵢ).</p></div>
+        <div><code>θ* = θ₀ − δ(δᵀθ₀)/(δᵀδ + ε)</code><p>Reference constrained projection when enabled.</p></div>
+        <div><code>e = δ ⊙ θ*</code><p>Six component interaction terms retained to expose cancellation.</p></div>
+        <div><code>R = Σeᵢ</code><p>Signed scalar constraint residual.</p></div>
+        <div><code>E = ‖e‖₂, G = ‖δ‖₂</code><p>Companion magnitude diagnostics.</p></div>
+      </div>
+
+      <h3>What it does</h3>
+      <ul>
+        <li>Evaluates all six aligned rate-state channels in one deterministic update.</li>
+        <li>Makes normalization explicit and user-auditable.</li>
+        <li>Exposes pre-projection and post-projection residual behavior.</li>
+        <li>Supports manual inspection and batch telemetry replay.</li>
+        <li>Exports machine-readable results for independent analysis.</li>
+      </ul>
+
+      <h3>What it does not do</h3>
+      <ul>
+        <li>It does not infer physical mappings from arbitrary raw sensor units.</li>
+        <li>It does not perform frame transformation or timestamp synchronization for the user.</li>
+        <li>It does not replace an EKF, UKF, complementary filter, or production navigation stack.</li>
+        <li>It does not establish physical validity merely because the algebraic residual is small.</li>
+        <li>It does not claim zero latency, zero drift, or improved accuracy without baseline testing.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <strong>6-Vector Environmental–Intentional State Architecture</strong>
+      <p>Preliminary experimental software. Inspect the source, reproduce the calculation, and compare against independent ground truth.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
