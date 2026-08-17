@@ -237,3 +237,31 @@ graph TD
     B --> E{Comparative Evaluation}
     C --> E
     D --> E
+
+---
+
+# Phase 3: Computational Execution & Empirical Benchmarking
+
+## 3.1 Objective
+Phase 3 translates the theoretical 6-Vector framework from mathematical formulation into a fully operational computational harness. 
+
+While Phases 1 and 2 define the system ontology and sensor geometry, Phase 3 documents the algorithmic execution of the Python simulation environment. The objective is to evaluate the 6-vector resolver ($\mathbf{V}$, $\mathbf{U}$, $\boldsymbol{\theta}$) against simulated and empirical flow data (e.g., NOAA hydrodynamic telemetry), benchmarking its state-estimation accuracy and software-induced phase delay directly against a conventional Extended Kalman Filter (EKF).
+
+---
+
+## 3.2 Simulation Pipeline Architecture
+
+The executable simulation harness follows a modular computational pipeline. Rather than processing environmental forces as unmodeled process noise ($Q$), the software ingests flow field data and vessel control commands simultaneously within a single update loop.
+
+```mermaid
+flowchart LR
+    A[Telemetry / Flow Data] -->|Transform| B[Environmental Vector V]
+    C[Control Commands] -->|Map State| D[Intentional Vector U]
+    
+    B --> E[Normalized Differential δ = D V-U]
+    D --> E
+    
+    E --> F[Resolver Array θ]
+    F --> G[Equilibrium Evaluation R = δᵀ θ]
+    
+    G -->|State Feedback| H[Continuous Trajectory & Diagnostics e]
