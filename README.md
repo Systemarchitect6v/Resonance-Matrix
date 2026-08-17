@@ -1,4 +1,4 @@
-> **Framework Navigation:** 🌐 [Systems Ontology Overview](https://github.com/KevinBynum/systems-ontology-proof-of-concept) | 🧭 [Continuous-Medium-Navigation](https://github.com/KevinBynum/Continuous-Medium-Navigation)
+> **Framework Navigation:** 🌐 [Systems Ontology Overview](https://github.com/KevinBynum/systems-ontology-proof-of-concept) | 🧭 [Continuous-Medium-Navigation](https://github.com/Systemarchitect6v/systems-ontology-proof-of-concept/blob/main/README.md)
 ---
 # 6-Vector Ontological Framework
 ## Dynamic Equilibrium in a Continuous-Medium Navigation Model
