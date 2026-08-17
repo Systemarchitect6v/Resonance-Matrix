@@ -9,12 +9,14 @@ The objective is to unify several established navigation techniques—ranging, i
 
 ## 2.2 Unified Navigation Architecture
 
-Modern deep-space navigation typically treats ranging, Doppler tracking, carrier-phase interferometry, and inertial dead-reckoning as separate analytical pipelines. The 6-Vector Framework unifies these observables into a single, constrained state vector where each observation restricts the solution space:
+In conventional deep-space operations, observables are divided across distinct processing domains: ground-based DSN tracking loops (Doppler, 2-way ranging, and $\Delta$-DOR interferometry) are evaluated over long batch windows in trajectory suites like NASA/JPL’s MONTE or GSFC’s GMAT, while onboard IMUs and Star Trackers run separate high-rate strapdown estimators.
+
+The **6-Vector Framework** unifies these disparate observables—frequency, carrier-phase delay, arrival timing, and inertial response—into a single, continuous onboard measurement matrix $\mathbf{y} = h(\mathbf{x}, \mathbf{s}) + \boldsymbol{\epsilon}$. By evaluating all six spatial sensor nodes simultaneously, each observable imposes immediate geometric constraints on the unified state vector:
 
 * **Frequency ($\Delta f$):** Measures relative radial velocity via the Doppler effect, constraining the state velocity vector $\mathbf{v}$.
-* **Signal Arrival Time ($\Delta\tau$):** Measures spatial wavefront propagation across sensor separation, constraining absolute position $\mathbf{r}$.
-* **Carrier Phase ($\Delta\phi$):** Measures phase differences across known physical baselines, refining angular orientation $\mathbf{q}$ beyond timing limits.
-* **Geometric Intersection:** Cross-correlates observations from multiple reference sources (beacons, pulsars, ground stations) to resolve spatial ambiguity.
+* **Signal Arrival Time ($\Delta\tau$):** Measures spatial wavefront propagation across onboard baselines, constraining absolute position $\mathbf{r}$.
+* **Carrier Phase ($\Delta\phi$):** Measures phase differences across known physical sensor baselines ($\mathbf{b}_i - \mathbf{b}_j$), refining orientation $\mathbf{q}$ beyond timing resolution limits.
+* **Geometric Intersection:** Cross-correlates multi-source observations (beacons, ground stations, pulsars) to bound state uncertainty natively.
 
 ### Architectural Comparison: Standard Navigation vs. Phase 2 Unification
 
