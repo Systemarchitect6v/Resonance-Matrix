@@ -9,7 +9,8 @@ This repository documents the development of a proposed computational framework 
 
 The framework began with an ontological question:
 
-**What assumptions are embedded in the way a navigation system represents the relationship between a moving body and its surrounding environment?**
+> [!NOTE]
+> **What assumptions are embedded in the way a navigation system represents the relationship between a moving body and its surrounding environment?**
 
 Rather than beginning by modifying an existing estimator, the development process began by examining those underlying assumptions and then translating the resulting conceptual changes into mathematical and software structures.
 
@@ -35,7 +36,7 @@ The proposed adjustment is therefore primarily architectural.
 
 Rather than treating the environment only as an external disturbance acting on an otherwise isolated state, the framework introduces an explicit **environmental state vector** and evaluates it simultaneously with the system's intentional state.
 
-The question being tested is:
+The core hypothesis being tested is:
 
 > **Can environmental and intentional states be represented within one normalized six-component computational state in a way that improves tracking, synchronization, or state estimation relative to a conventional estimator architecture?**
 
@@ -49,11 +50,11 @@ It proposes a computational architecture for representing environmental and inte
 
 The proposed contribution is the combination of:
 
-1. an explicit environmental state vector **V**,
-2. an intentional or commanded state vector **U**,
-3. a normalized six-component differential,
-4. a resolving-coordinate state **θ**,
-5. and common-cycle computational evaluation of translational and rotational interactions.
+1. An explicit environmental state vector $\mathbf{V}$,
+2. An intentional or commanded state vector $\mathbf{U}$,
+3. A normalized six-component differential,
+4. A resolving-coordinate state $\boldsymbol{\theta}$, and
+5. Common-cycle computational evaluation of translational and rotational interactions.
 
 Standard 6-DOF kinematics, quaternion attitude propagation, rigid-body mechanics, Kalman filtering, and joint translational-rotational estimation are treated as established engineering practices rather than claimed innovations.
 
@@ -117,34 +118,34 @@ The environment itself changes spatially.
 
 The proposed framework represents the interaction using three principal six-component quantities:
 
-- **V** — environmental state,
-- **U** — intentional or commanded state,
-- **θ** — resolving-coordinate state.
+- $\mathbf{V}$ — environmental state,
+- $\mathbf{U}$ — intentional or commanded state,
+- $\boldsymbol{\theta}$ — resolving-coordinate state.
 
 The basic state differential is:
 
 $$
-\Delta V = V - U
+\Delta \mathbf{V} = \mathbf{V} - \mathbf{U}
 $$
 
 Because translational and rotational quantities have different physical units, the current software formulation normalizes the differential before combining the six components:
 
 $$
-\delta = D(V-U)
+\boldsymbol{\delta} = D(\mathbf{V} - \mathbf{U})
 $$
 
-where **D** is a normalization operator.
+where $D$ is a normalization operator.
 
 The corresponding constraint residual is:
 
 $$
-R = \delta^T\theta
+R = \boldsymbol{\delta}^T \boldsymbol{\theta}
 $$
 
 or:
 
 $$
-R = \sum_{i=1}^{6}\delta_i\theta_i
+R = \sum_{i=1}^{6} \delta_i \theta_i
 $$
 
 The target computational condition is:
@@ -153,25 +154,21 @@ $$
 R \rightarrow 0
 $$
 
-A low value of **R** does not, by itself, demonstrate that the physical system is correctly modeled.
-
-Individual positive and negative components can cancel.
+A low value of $R$ does not, by itself, demonstrate that the physical system is correctly modeled, as individual positive and negative components can cancel.
 
 For that reason, the current architecture also retains component-level diagnostics:
 
 $$
-e = \delta \odot \theta
+\mathbf{e} = \boldsymbol{\delta} \odot \boldsymbol{\theta}
 $$
 
 and:
 
 $$
-E = \|e\|_2
+E = \|\mathbf{e}\|_2
 $$
 
-The engineering question is therefore not simply whether the equation can be made to equal zero.
-
-The important question is whether the six-component representation produces a **better external state estimate** when compared against independently measured ground truth and a conventional estimator.
+The engineering question is therefore not simply whether the equation can be made to equal zero, but whether the six-component representation produces a **better external state estimate** when compared against independently measured ground truth and a conventional estimator.
 
 ---
 
@@ -181,20 +178,18 @@ The Florida Current example becomes relevant to navigation when a vessel is intr
 
 A vessel moving through the current has both:
 
-1. an internally generated or commanded state, and
-2. an environmental state influencing its trajectory.
+1. An internally generated or commanded state, and
+2. An environmental state influencing its trajectory.
 
 The proposed architecture represents those explicitly.
 
-## 6.1 Environmental State — V
+## 6.1 Environmental State — $\mathbf{V}$
 
 The environmental vector represents the mapped effect of the surrounding environment on the six-component dynamic state.
 
-Raw quantities such as current velocity, pressure, density, or shear cannot simply be inserted into **V**.
+Raw quantities such as current velocity, pressure, density, or shear cannot simply be inserted into $\mathbf{V}$. They must first be transformed into quantities compatible with the system state being evaluated.
 
-They must first be transformed into quantities compatible with the system state being evaluated.
-
-## 6.2 Intentional State — U
+## 6.2 Intentional State — $\mathbf{U}$
 
 The intentional vector represents the commanded or internally generated state of the vessel.
 
@@ -202,16 +197,14 @@ Depending on implementation, this may include:
 
 - commanded translational velocity,
 - commanded angular rate,
-- propulsion output mapped into state-rate quantities,
-- or controller-defined target motion.
+- propulsion output mapped into state-rate quantities, or
+- controller-defined target motion.
 
-## 6.3 Resolving State — θ
+## 6.3 Resolving State — $\boldsymbol{\theta}$
 
 The resolving-coordinate vector represents the computational relationship used to evaluate the environmental-intentional differential.
 
-In the current engineering formulation, **θ_i is a resolver coefficient**.
-
-It should not automatically be interpreted as a literal geometric angle on every axis.
+In the current engineering formulation, $\theta_i$ is a **resolver coefficient**. It should not automatically be interpreted as a literal geometric angle on every axis.
 
 ---
 
@@ -222,8 +215,8 @@ Consider a vessel commanded to maintain a particular heading while moving throug
 The vessel may have:
 
 - a commanded heading,
-- a heading through the water,
-- and a course over ground.
+- a heading through the water, and
+- a course over ground.
 
 The difference between commanded motion and observed motion provides an externally measurable quantity against which the architecture can be tested.
 
@@ -233,299 +226,14 @@ Instead:
 
 > **The calculated state must ultimately be compared with independently observed position, velocity, heading, and course-over-ground data.**
 
-A practical validation experiment therefore compares:
-
-```text
-Conventional Estimator Output
-            vs.
-6-Vector Architecture Output
-            vs.
-Independent Ground Truth
-```
-
-using the same sensor and environmental inputs.
-
----
-
-# 8. Dynamic Environmental Change
-
-One motivation for the architecture is the treatment of simultaneous environmental changes.
-
-Suppose a vessel experiences:
-
-- a change in current velocity,
-- a directional shear,
-- and a rotational moment
-
-during the same measurement interval.
-
-The architecture represents the resulting state difference as one normalized six-component differential:
-
-$$
-\delta = D(V-U)
-$$
-
-with components corresponding to three translational and three rotational state dimensions.
-
-The proposed advantage is **not** that physical or computational latency disappears.
-
-Sensor sampling, data buses, clock synchronization, numerical computation, actuator response, and estimator execution all require finite time.
-
-The testable hypothesis is narrower:
-
-> **If translational and rotational environmental effects are evaluated from the same timestamp and inside the same state cycle, the architecture may reduce additional software-induced phase separation between those quantities.**
-
-That hypothesis can be measured.
-
----
-
-# 9. Translational and Rotational State
-
-The dynamic state is represented as:
-
-$$
-S =
-\begin{bmatrix}
-v_x \\
-v_y \\
-v_z \\
-\omega_x \\
-\omega_y \\
-\omega_z
-\end{bmatrix}
-$$
-
-where:
-
-- **v_x, v_y, v_z** are translational velocity components,
-- **ω_x, ω_y, ω_z** are body angular-rate components.
-
-These rotational state variables should not be confused with **fluid vorticity**.
-
-Fluid vorticity is a property of the environmental velocity field:
-
-$$
-\zeta = \nabla \times \mathbf{v}
-$$
-
-Environmental vorticity may influence the rotational state of a submerged or airborne vehicle, but an explicit physical mapping is required to convert that field quantity into vehicle angular acceleration or angular-rate response.
-
-This distinction is maintained in the current architecture.
-
----
-
-# 10. Why Six Components?
-
-The six-component representation allows translational and rotational state differences to be evaluated together.
-
-| Components | State |
-|---|---|
-| 1–3 | Translational motion |
-| 4–6 | Rotational motion |
-
-This is not itself novel. Six-degree-of-freedom representations are standard engineering practice.
-
-The proposed distinction is the **environmental-intentional decomposition** applied across those six components.
-
-Instead of defining only the vehicle state:
-
-$$
-S
-$$
-
-the architecture explicitly distinguishes:
-
-$$
-V = \text{environmental state}
-$$
-
-$$
-U = \text{intentional state}
-$$
-
-and:
-
-$$
-\Delta V = V-U
-$$
-
-The normalized differential is then evaluated during the same computational cycle.
-
----
-
-# 11. The Stationary-System Case
-
-The framework can also be examined for a stationary sensor or tracking system.
-
-For a stationary device:
-
-$$
-U \approx \text{commanded stationary state}
-$$
-
-The system may nevertheless experience changes in:
-
-- temperature,
-- vibration,
-- atmospheric conditions,
-- mechanical stress,
-- electromagnetic environment,
-- platform motion,
-- or sensor bias.
-
-The framework does **not** assume that all such variation represents motion of a universal physical medium.
-
-Instead, the architectural question remains:
-
-> **Can measurable environmental influences be represented explicitly as state variables rather than being handled exclusively as undifferentiated residual noise?**
-
-Some observed variation will remain stochastic noise.
-
-Some may arise from identifiable environmental causes.
-
-The purpose of the architecture is to preserve the possibility of distinguishing those categories rather than assuming in advance that every residual belongs to either one.
-
----
-
-# 12. From the NOAA Example to an Engineering Benchmark
-
-The Florida Current measurements were an important **developmental test case**, but they are not a substitute for a navigation benchmark.
-
-The NOAA values demonstrate that the environmental system has measurable, spatially changing physical structure.
-
-They do not establish that the proposed six-vector resolver outperforms an existing estimator.
-
-The next engineering test is therefore a controlled comparison.
-
-## Proposed Benchmark
-
-Use one common dataset containing:
-
-- timestamped vehicle state data,
-- environmental current or wind measurements,
-- commanded motion,
-- inertial measurements,
-- position measurements,
-- attitude measurements,
-- and independently determined ground truth.
-
-### Baseline
-
-Run the data through a conventional estimator such as:
-
-- EKF,
-- UKF,
-- production navigation estimator,
-- or another documented state-estimation architecture.
-
-### Proposed Architecture
-
-Run the same input data through the normalized environmental-intentional six-state resolver.
-
-### Compare
-
-Measure:
-
-- position RMSE,
-- orientation RMSE,
-- course-over-ground error,
-- drift rate,
-- translational-rotational phase offset,
-- sensor-to-output latency,
-- numerical stability,
-- sensitivity to environmental transients,
-- and computational cost.
-
----
-
-# 13. What Would Constitute Evidence?
-
-The architecture should not be considered successful merely because:
-
-$$
-R \approx 0
-$$
-
-The resolver is mathematically designed to reduce that residual.
-
-Meaningful evidence requires an **independent observable result**.
-
-Examples include:
-
-- lower ground-truth position error,
-- lower attitude error,
-- reduced measured phase offset,
-- lower drift rate,
-- improved environmental-transient response,
-- or equivalent accuracy at lower computational cost.
-
-This distinction separates:
-
-**internal mathematical consistency**
-
-from:
-
-**external engineering performance.**
-
----
-
-# 14. Development Status
-
-The project has progressed through the following stages:
-
-```text
-1. Ontological audit
-        ↓
-2. Continuous-environment interpretation
-        ↓
-3. NOAA Florida Current observational case
-        ↓
-4. Environmental / intentional state decomposition
-        ↓
-5. Six-component software architecture
-        ↓
-6. Dimensional normalization and resolver formulation
-        ↓
-7. Conventional-estimator benchmark
-```
-
-Stages **1–6** establish the conceptual and computational architecture.
-
-Stage **7** is the critical engineering validation step.
-
-The current claim is deliberately limited:
-
-> **The framework has developed far enough to be implemented and benchmarked. Its performance advantage, if any, must now be established experimentally against an appropriate conventional estimator.**
-
----
-
-# 15. Conclusion
-
-The 6-Vector Ontological Framework began with a conceptual question about how navigation software represents the relationship between a system and its environment.
-
-That inquiry produced a computational architecture in which environmental influence and system intent are represented explicitly as corresponding six-component states.
-
-The current formulation:
-
-- separates environmental state **V** from intentional state **U**,
-- evaluates their differential **ΔV**,
-- normalizes translational and rotational quantities before combining them,
-- processes all six components during the same state cycle,
-- preserves component-level residual information,
-- and produces an architecture that can be compared directly with conventional navigation estimators.
-
-The NOAA Florida Current example remains important because it provided the original real-world observational case that motivated the transition toward an explicitly represented environmental state.
-
-It should be understood as the **starting empirical case, not the final proof**.
-
-The next question is an engineering one:
-
-> **When both architectures receive the same real-world telemetry, does the six-vector environmental-intentional representation produce a measurably better navigation solution?**
-
-That question is testable.
-
-And that is the present purpose of this repository.
-
----
-
-*This repository is actively maintained as an open record of the framework's conceptual development, mathematical formulation, software architecture, and progression toward controlled engineering validation.*
+A practical validation experiment compares three parallel state outputs:
+
+```mermaid
+graph TD
+    A[Telemetry & Sensor Inputs] --> B[Conventional Estimator Output]
+    A --> C[6-Vector Architecture Output]
+    A --> D[Independent Ground Truth]
+    
+    B --> E{Comparative Evaluation}
+    C --> E
+    D --> E
